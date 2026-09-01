@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Русская грамматика и английская грамматика — кто круче?</title>
+    <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #fff; 
+      color: #333; 
+      line-height: 1.6;
+    }
+
+    .layout { 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column;
+      gap: 20px; 
+      width: 100%;
+    }
+
+    .sidebar { 
+      width: 100%; 
+      flex-shrink: 0; 
+      order: 1;
+    }
+
+    .main-content { 
+      width: 100%; 
+      min-width: 0; 
+      order: 2;
+    }
+
+    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+    header h1 { margin: 0; font-size: 1.8rem; overflow-wrap: break-word; }
+    header a { text-decoration: none; color: #111; }
+
+    article { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 25px; clear: both; }
+    article h2 { margin-top: 0; font-size: 1.5rem; overflow-wrap: break-word; }
+    article h2 a { color: #111; text-decoration: none; }
+    article h2 a:hover { color: #0066cc; }
+    article img { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
+    article p { margin: 12px 0; clear: both; word-break: break-word; overflow-wrap: break-word; }
+
+    .post-meta { font-size: 0.85rem; color: #666; margin-top: 15px; background: #f9f9f9; padding: 8px 12px; border-radius: 4px; clear: both; }
+    .post-meta a { color: #0066cc; text-decoration: none; }
+    .post-meta a:hover { text-decoration: underline; }
+    .more-link { display: inline-block; margin-top: 10px; font-weight: bold; color: #0066cc; text-decoration: none; }
+    .more-link:hover { text-decoration: underline; }
+
+    .widget { margin-bottom: 20px; width: 100%; }
+    .widget h3 { font-size: 1.1rem; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 12px; }
+    .widget p { margin: 5px 0; font-size: 0.9rem; }
+    .widget a { color: #0066cc; text-decoration: none; }
+    .widget a:hover { text-decoration: underline; }
+    
+    #search-input, .labels-select { 
+      width: 100%; 
+      max-width: 100%;
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      font-size: 0.95rem; 
+      background-color: #fff;
+      display: block;
+    }
+
+    .labels-list { display: none; }
+    .labels-select { display: block; }
+
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; line-height: 1.4; clear: both; display: block; overflow-x: auto; }
+    th, td { padding: 8px 12px; border: 1px solid #dee2e6; text-align: left; }
+    th { background-color: #f1f3f5; font-weight: bold; color: #333; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+    tr:hover { background-color: #f1f5f9; }
+
+    @media (min-width: 768px) {
+      .layout { 
+        flex-direction: row; 
+        gap: 40px; 
+        padding: 20px;
+        align-items: flex-start;
+      }
+      .main-content {
+        flex: 1;
+        order: 1;
+      }
+      .sidebar { 
+        width: 280px; 
+        position: sticky; 
+        top: 20px; 
+        order: 2;
+      }
+      .labels-list { 
+        display: block; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 0.9rem; 
+        line-height: 1.8; 
+      }
+      .labels-select { 
+        display: none; 
+      }
+      table {
+        display: table;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="layout">
+        
+        <div class="sidebar">
+          <header>
+            <h1><a href="../index.html">YZ Blog</a></h1>
+          </header>
+          <div class="widget">
+            <h3>Поиск по статьям</h3>
+            <input type="text" id="search-input" placeholder="Поиск...">
+          </div>
+          <div class="widget">
+            <h3>Рубрики</h3>
+            <ul class="labels-list">
+              <li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
+<li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
+<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
+<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
+<li><a href="../labels/video.html">Видео</a> (2)</li>
+<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
+<li><a href="../labels/eda.html">Еда</a> (3)</li>
+<li><a href="../labels/interesno.html">Интересно</a> (20)</li>
+<li><a href="../labels/istorii.html">Истории</a> (16)</li>
+<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
+<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
+<li><a href="../labels/konferentsii.html">Конференции</a> (3)</li>
+<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
+<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
+<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
+<li><a href="../labels/psihologiya.html">Психология</a> (26)</li>
+<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
+<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
+<li><a href="../labels/yazyki.html">Языки</a> (4)</li>
+            </ul>
+            <select class="labels-select" onchange="if (this.value) window.location.href=this.value;">
+              <option value="">Выберите рубрику...</option>
+              <option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
+<option value="../labels/anekdoty.html">Анекдоты (10)</option>
+<option value="../labels/astronomiya.html">Астрономия (1)</option>
+<option value="../labels/biznes.html">Бизнес (23)</option>
+<option value="../labels/video.html">Видео (2)</option>
+<option value="../labels/golovolomki.html">Головоломки (4)</option>
+<option value="../labels/eda.html">Еда (3)</option>
+<option value="../labels/interesno.html">Интересно (20)</option>
+<option value="../labels/istorii.html">Истории (16)</option>
+<option value="../labels/istoriya-kompaniy.html">История компаний (3)</option>
+<option value="../labels/kartinki.html">Картинки (2)</option>
+<option value="../labels/konferentsii.html">Конференции (3)</option>
+<option value="../labels/krasivaya-grafika.html">Красивая графика (2)</option>
+<option value="../labels/marketing.html">Маркетинг (9)</option>
+<option value="../labels/programmirovanie.html">Программирование (1)</option>
+<option value="../labels/psihologiya.html">Психология (26)</option>
+<option value="../labels/yumor.html">Юмор (32)</option>
+<option value="../labels/yumor-for-programmer.html">Юмор for programmer (10)</option>
+<option value="../labels/yazyki.html">Языки (4)</option>
+            </select>
+          </div>
+          <div class="widget">
+            <h3>Контакты</h3>
+            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
+          </div>
+        </div>
+      
+        <div class="main-content">
+            <article>
+                <h2>Русская грамматика и английская грамматика — кто круче?</h2>
+                <p>В интернете уже много лет гуляет вот такая картинка.</p>
+<p>English: <strong>run ran running</strong><br>Russian: <strong>бежать бежал бегу бежишь бежит бежим бегут бежав бегая бегущий побежать прибежать выбежать перебежать забежать</strong><br>...и ещё более 100 форм.</p>
+<p>Вывод: русский язык намного богаче английского.<br>Но здесь есть одна проблема.<!-- more --></p>
+<p>Сравниваются три английские формы с почти всей системой русского языка.</p>
+<p>Попробуем сравнить честно. Я предлагаю сделать не перевод, а сопоставление смыслов.<br>Полная сравнительная таблица</p>
+<table>
+<thead>
+<tr>
+<th align="right">№</th>
+<th>Русский</th>
+<th>English</th>
+<th>Если нет прямого русского аналога</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td>бежать</td>
+<td>run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td>бегать</td>
+<td>run (iterative)</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td>побежать</td>
+<td>start running</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td>побегать</td>
+<td>run for a while</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td>вбежать</td>
+<td>run in</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td>выбежать</td>
+<td>run out</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td>добежать</td>
+<td>run to</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">8</td>
+<td>забежать</td>
+<td>run in / drop by</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">9</td>
+<td>набежать</td>
+<td>run onto</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td>оббежать</td>
+<td>run around</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td>обежать</td>
+<td>run around</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td>отбежать</td>
+<td>run away from</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td>перебежать</td>
+<td>run across</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td>подбежать</td>
+<td>run up to</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td>прибежать</td>
+<td>run to / arrive running</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td>пробежать</td>
+<td>run through / run past</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td>разбежаться</td>
+<td>scatter / run apart</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">18</td>
+<td>сбежать</td>
+<td>run away</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td>убежать</td>
+<td>run away</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td>избежать</td>
+<td>avoid</td>
+<td>лексикализованное значение</td>
+</tr>
+<tr>
+<td align="right">21</td>
+<td>бежав</td>
+<td>having run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td>бегая</td>
+<td>running</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">23</td>
+<td>бегущий</td>
+<td>running</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td>бежавший</td>
+<td>having run / who had run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">25</td>
+<td>бежать</td>
+<td>to run</td>
+<td>инфинитив</td>
+</tr>
+<tr>
+<td align="right">26</td>
+<td>бежал</td>
+<td>ran</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">27</td>
+<td>буду бежать</td>
+<td>will run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">28</td>
+<td>бежал бы</td>
+<td>would run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">29</td>
+<td>run</td>
+<td>run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">30</td>
+<td>runs</td>
+<td>runs</td>
+<td>форма 3-го лица ед. числа</td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td>ran</td>
+<td>ran</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">32</td>
+<td>running</td>
+<td>running</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">33</td>
+<td>to run</td>
+<td>to run</td>
+<td>инфинитив</td>
+</tr>
+<tr>
+<td align="right">34</td>
+<td>have run</td>
+<td>have run</td>
+<td>уже пробежал / пробежали</td>
+</tr>
+<tr>
+<td align="right">35</td>
+<td>has run</td>
+<td>has run</td>
+<td>уже пробежал</td>
+</tr>
+<tr>
+<td align="right">36</td>
+<td>had run</td>
+<td>had run</td>
+<td>к тому моменту уже пробежал</td>
+</tr>
+<tr>
+<td align="right">37</td>
+<td>will run</td>
+<td>will run</td>
+<td>—</td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td>would run</td>
+<td>would run</td>
+<td>бежал бы</td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td>will have run</td>
+<td>will have run</td>
+<td>к тому моменту уже пробежит</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td>would have run</td>
+<td>would have run</td>
+<td>мог бы пробежать</td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td>am running</td>
+<td>am running</td>
+<td>бегу сейчас</td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td>is running</td>
+<td>is running</td>
+<td>бежит сейчас</td>
+</tr>
+<tr>
+<td align="right">43</td>
+<td>are running</td>
+<td>are running</td>
+<td>бегут сейчас</td>
+</tr>
+<tr>
+<td align="right">44</td>
+<td>was running</td>
+<td>was running</td>
+<td>бежал в тот момент</td>
+</tr>
+<tr>
+<td align="right">45</td>
+<td>were running</td>
+<td>were running</td>
+<td>бежали в тот момент</td>
+</tr>
+<tr>
+<td align="right">46</td>
+<td>will be running</td>
+<td>will be running</td>
+<td>будет бежать</td>
+</tr>
+<tr>
+<td align="right">47</td>
+<td>would be running</td>
+<td>would be running</td>
+<td>бежал бы в тот момент</td>
+</tr>
+<tr>
+<td align="right">48</td>
+<td>have been running</td>
+<td>have been running</td>
+<td>бегаю уже некоторое время</td>
+</tr>
+<tr>
+<td align="right">49</td>
+<td>has been running</td>
+<td>has been running</td>
+<td>бежит уже некоторое время</td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td>had been running</td>
+<td>had been running</td>
+<td>к тому моменту уже долго бежал</td>
+</tr>
+<tr>
+<td align="right">51</td>
+<td>will have been running</td>
+<td>will have been running</td>
+<td>будет уже долго бежать</td>
+</tr>
+<tr>
+<td align="right">52</td>
+<td>would have been running</td>
+<td>would have been running</td>
+<td>долго бежал бы</td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td>being run</td>
+<td>being run</td>
+<td>находиться в процессе выполнения / управления</td>
+</tr>
+<tr>
+<td align="right">54</td>
+<td>been run</td>
+<td>been run</td>
+<td>был выполнен / был проведён</td>
+</tr>
+<tr>
+<td align="right">55</td>
+<td>be run</td>
+<td>be run</td>
+<td>быть запущенным / управляться</td>
+</tr>
+<tr>
+<td align="right">56</td>
+<td>run away</td>
+<td>run away</td>
+<td>убежать, скрыться</td>
+</tr>
+<tr>
+<td align="right">57</td>
+<td>run off</td>
+<td>run off</td>
+<td>сбежать</td>
+</tr>
+<tr>
+<td align="right">58</td>
+<td>run out</td>
+<td>run out</td>
+<td>закончиться</td>
+</tr>
+<tr>
+<td align="right">59</td>
+<td>run out of</td>
+<td>run out of</td>
+<td>исчерпать запас чего-либо</td>
+</tr>
+<tr>
+<td align="right">60</td>
+<td>run into</td>
+<td>run into</td>
+<td>случайно встретить, столкнуться</td>
+</tr>
+<tr>
+<td align="right">61</td>
+<td>run across</td>
+<td>run across</td>
+<td>случайно наткнуться</td>
+</tr>
+<tr>
+<td align="right">62</td>
+<td>run over</td>
+<td>run over</td>
+<td>переехать; быстро просмотреть</td>
+</tr>
+<tr>
+<td align="right">63</td>
+<td>run through</td>
+<td>run through</td>
+<td>просмотреть; прорепетировать</td>
+</tr>
+<tr>
+<td align="right">64</td>
+<td>run by</td>
+<td>run by</td>
+<td>согласовать с кем-либо</td>
+</tr>
+<tr>
+<td align="right">65</td>
+<td>run down</td>
+<td>run down</td>
+<td>критиковать; разрядиться; сбить</td>
+</tr>
+<tr>
+<td align="right">66</td>
+<td>run up</td>
+<td>run up</td>
+<td>накопить (долг, счёт)</td>
+</tr>
+<tr>
+<td align="right">67</td>
+<td>run up against</td>
+<td>run up against</td>
+<td>столкнуться с препятствием</td>
+</tr>
+<tr>
+<td align="right">68</td>
+<td>run after</td>
+<td>run after</td>
+<td>преследовать</td>
+</tr>
+<tr>
+<td align="right">69</td>
+<td>run for</td>
+<td>run for</td>
+<td>баллотироваться; стремиться к</td>
+</tr>
+<tr>
+<td align="right">70</td>
+<td>run with</td>
+<td>run with</td>
+<td>поддержать идею; использовать</td>
+</tr>
+<tr>
+<td align="right">71</td>
+<td>run along</td>
+<td>run along</td>
+<td>иди уже</td>
+</tr>
+<tr>
+<td align="right">72</td>
+<td>run around</td>
+<td>run around</td>
+<td>носиться; бесцельно бегать</td>
+</tr>
+<tr>
+<td align="right">73</td>
+<td>run back</td>
+<td>run back</td>
+<td>вернуться бегом</td>
+</tr>
+<tr>
+<td align="right">74</td>
+<td>run ahead</td>
+<td>run ahead</td>
+<td>убежать вперёд</td>
+</tr>
+<tr>
+<td align="right">75</td>
+<td>run behind</td>
+<td>run behind</td>
+<td>отставать от графика</td>
+</tr>
+<tr>
+<td align="right">76</td>
+<td>run beyond</td>
+<td>run beyond</td>
+<td>выходить за пределы</td>
+</tr>
+<tr>
+<td align="right">77</td>
+<td>run against</td>
+<td>run against</td>
+<td>идти против; сталкиваться</td>
+</tr>
+<tr>
+<td align="right">78</td>
+<td>run beneath</td>
+<td>run beneath</td>
+<td>проходить под</td>
+</tr>
+<tr>
+<td align="right">79</td>
+<td>run alongside</td>
+<td>run alongside</td>
+<td>идти параллельно</td>
+</tr>
+<tr>
+<td align="right">80</td>
+<td>run between</td>
+<td>run between</td>
+<td>курсировать между</td>
+</tr>
+<tr>
+<td align="right">81</td>
+<td>run through with</td>
+<td>run through with</td>
+<td>детально разобрать; пронзить</td>
+</tr>
+<tr>
+<td align="right">82</td>
+<td>run over to</td>
+<td>run over to</td>
+<td>быстро сбегать куда-либо</td>
+</tr>
+<tr>
+<td align="right">83</td>
+<td>run away with</td>
+<td>run away with</td>
+<td>увлечься; украсть; унести</td>
+</tr>
+<tr>
+<td align="right">84</td>
+<td>run off with</td>
+<td>run off with</td>
+<td>сбежать с; украсть</td>
+</tr>
+<tr>
+<td align="right">85</td>
+<td>run down on</td>
+<td>run down on</td>
+<td>резко критиковать</td>
+</tr>
+<tr>
+<td align="right">86</td>
+<td>run around with</td>
+<td>run around with</td>
+<td>проводить время с кем-либо</td>
+</tr>
+<tr>
+<td align="right">87</td>
+<td>run into debt</td>
+<td>run into debt</td>
+<td>залезть в долги</td>
+</tr>
+<tr>
+<td align="right">88</td>
+<td>run into trouble</td>
+<td>run into trouble</td>
+<td>столкнуться с проблемами</td>
+</tr>
+<tr>
+<td align="right">89</td>
+<td>run into difficulties</td>
+<td>run into difficulties</td>
+<td>столкнуться с трудностями</td>
+</tr>
+<tr>
+<td align="right">90</td>
+<td>run short of</td>
+<td>run short of</td>
+<td>испытывать нехватку</td>
+</tr>
+<tr>
+<td align="right">91</td>
+<td>run low</td>
+<td>run low</td>
+<td>подходить к концу</td>
+</tr>
+<tr>
+<td align="right">92</td>
+<td>run dry</td>
+<td>run dry</td>
+<td>иссякнуть</td>
+</tr>
+<tr>
+<td align="right">93</td>
+<td>run free</td>
+<td>run free</td>
+<td>быть на свободе</td>
+</tr>
+<tr>
+<td align="right">94</td>
+<td>run loose</td>
+<td>run loose</td>
+<td>разгуливать без контроля</td>
+</tr>
+<tr>
+<td align="right">95</td>
+<td>run wild</td>
+<td>run wild</td>
+<td>выйти из-под контроля</td>
+</tr>
+<tr>
+<td align="right">96</td>
+<td>run late</td>
+<td>run late</td>
+<td>опаздывать</td>
+</tr>
+<tr>
+<td align="right">97</td>
+<td>run early</td>
+<td>run early</td>
+<td>идти с опережением графика</td>
+</tr>
+<tr>
+<td align="right">98</td>
+<td>run smoothly</td>
+<td>run smoothly</td>
+<td>работать без сбоев</td>
+</tr>
+<tr>
+<td align="right">99</td>
+<td>run continuously</td>
+<td>run continuously</td>
+<td>работать непрерывно</td>
+</tr>
+<tr>
+<td align="right">100</td>
+<td>run automatically</td>
+<td>run automatically</td>
+<td>выполняться автоматически</td>
+</tr>
+<tr>
+<td align="right">101</td>
+<td>run manually</td>
+<td>run manually</td>
+<td>выполняться вручную</td>
+</tr>
+<tr>
+<td align="right">102</td>
+<td>run forever</td>
+<td>run forever</td>
+<td>работать бесконечно</td>
+</tr>
+<tr>
+<td align="right">103</td>
+<td>run nonstop</td>
+<td>run nonstop</td>
+<td>работать без остановки</td>
+</tr>
+<tr>
+<td align="right">104</td>
+<td>run constantly</td>
+<td>run constantly</td>
+<td>работать постоянно</td>
+</tr>
+<tr>
+<td align="right">105</td>
+<td>run overnight</td>
+<td>run overnight</td>
+<td>работать всю ночь</td>
+</tr>
+<tr>
+<td align="right">106</td>
+<td>run today</td>
+<td>run today</td>
+<td>выполниться сегодня</td>
+</tr>
+<tr>
+<td align="right">107</td>
+<td>run tomorrow</td>
+<td>run tomorrow</td>
+<td>выполниться завтра</td>
+</tr>
+<tr>
+<td align="right">108</td>
+<td>run twice</td>
+<td>run twice</td>
+<td>запуститься дважды</td>
+</tr>
+<tr>
+<td align="right">109</td>
+<td>run again</td>
+<td>run again</td>
+<td>запустить повторно</td>
+</tr>
+<tr>
+<td align="right">110</td>
+<td>rerun</td>
+<td>rerun</td>
+<td>повторный запуск / повторный показ</td>
+</tr>
+<tr>
+<td align="right">111</td>
+<td>overrun</td>
+<td>overrun</td>
+<td>переполнить; захватить; превысить</td>
+</tr>
+<tr>
+<td align="right">112</td>
+<td>outrun</td>
+<td>outrun</td>
+<td>обогнать бегом</td>
+</tr>
+<tr>
+<td align="right">113</td>
+<td>underrun</td>
+<td>underrun</td>
+<td>проходить под; недовыполнить</td>
+</tr>
+<tr>
+<td align="right">114</td>
+<td>runway</td>
+<td>runway</td>
+<td>взлётно-посадочная полоса</td>
+</tr>
+<tr>
+<td align="right">115</td>
+<td>runner</td>
+<td>runner</td>
+<td>бегун</td>
+</tr>
+<tr>
+<td align="right">116</td>
+<td>running</td>
+<td>running</td>
+<td>бег; работающий (как сущ./прил.)</td>
+</tr>
+<tr>
+<td align="right">117</td>
+<td>run-through</td>
+<td>run-through</td>
+<td>репетиция; краткий обзор</td>
+</tr>
+<tr>
+<td align="right">118</td>
+<td>run-up</td>
+<td>run-up</td>
+<td>разгон; подготовительный этап</td>
+</tr>
+<tr>
+<td align="right">119</td>
+<td>run-off</td>
+<td>run-off</td>
+<td>сток; дополнительный тур выборов</td>
+</tr>
+<tr>
+<td align="right">120</td>
+<td>run-in</td>
+<td>run-in</td>
+<td>конфликт; обкатка</td>
+</tr>
+<tr>
+<td align="right">121</td>
+<td>runaround</td>
+<td>runaround</td>
+<td>волокита; уклончивые ответы</td>
+</tr>
+<tr>
+<td align="right">122</td>
+<td>runabout</td>
+<td>runabout</td>
+<td>небольшой автомобиль/лодка</td>
+</tr>
+<tr>
+<td align="right">123</td>
+<td>runaway</td>
+<td>runaway</td>
+<td>беглец; вышедший из-под контроля</td>
+</tr>
+<tr>
+<td align="right">124</td>
+<td>runback</td>
+<td>runback</td>
+<td>ответный вынос (спорт)</td>
+</tr>
+<tr>
+<td align="right">125</td>
+<td>runbook</td>
+<td>runbook</td>
+<td>регламент выполнения процедуры</td>
+</tr>
+<tr>
+<td align="right">126</td>
+<td>runline</td>
+<td>run line</td>
+<td>фора (спорт)</td>
+</tr>
+<tr>
+<td align="right">127</td>
+<td>run rate</td>
+<td>run rate</td>
+<td>темп; прогнозный показатель</td>
+</tr>
+<tr>
+<td align="right">128</td>
+<td>run length</td>
+<td>run length</td>
+<td>длина серии</td>
+</tr>
+<tr>
+<td align="right">129</td>
+<td>run time</td>
+<td>runtime</td>
+<td>время выполнения</td>
+</tr>
+<tr>
+<td align="right">130</td>
+<td>runtime</td>
+<td>runtime</td>
+<td>среда выполнения</td>
+</tr>
+<tr>
+<td align="right">131</td>
+<td>run queue</td>
+<td>run queue</td>
+<td>очередь выполнения</td>
+</tr>
+<tr>
+<td align="right">132</td>
+<td>run loop</td>
+<td>run loop</td>
+<td>цикл выполнения</td>
+</tr>
+<tr>
+<td align="right">133</td>
+<td>run level</td>
+<td>runlevel</td>
+<td>уровень загрузки (Unix)</td>
+</tr>
+<tr>
+<td align="right">134</td>
+<td>run command</td>
+<td>run command</td>
+<td>выполнить команду</td>
+</tr>
+<tr>
+<td align="right">135</td>
+<td>run process</td>
+<td>run process</td>
+<td>запустить процесс</td>
+</tr>
+<tr>
+<td align="right">136</td>
+<td>run program</td>
+<td>run program</td>
+<td>запустить программу</td>
+</tr>
+<tr>
+<td align="right">137</td>
+<td>run application</td>
+<td>run application</td>
+<td>запустить приложение</td>
+</tr>
+<tr>
+<td align="right">138</td>
+<td>run script</td>
+<td>run script</td>
+<td>запустить сценарий</td>
+</tr>
+<tr>
+<td align="right">139</td>
+<td>run task</td>
+<td>run task</td>
+<td>выполнить задачу</td>
+</tr>
+<tr>
+<td align="right">140</td>
+<td>run job</td>
+<td>run job</td>
+<td>выполнить задание</td>
+</tr>
+<tr>
+<td align="right">141</td>
+<td>run test</td>
+<td>run test</td>
+<td>запустить тест</td>
+</tr>
+<tr>
+<td align="right">142</td>
+<td>run benchmark</td>
+<td>run benchmark</td>
+<td>запустить тест производительности</td>
+</tr>
+<tr>
+<td align="right">143</td>
+<td>run simulation</td>
+<td>run simulation</td>
+<td>выполнить моделирование</td>
+</tr>
+<tr>
+<td align="right">144</td>
+<td>run experiment</td>
+<td>run experiment</td>
+<td>провести эксперимент</td>
+</tr>
+<tr>
+<td align="right">145</td>
+<td>run analysis</td>
+<td>run analysis</td>
+<td>выполнить анализ</td>
+</tr>
+<tr>
+<td align="right">146</td>
+<td>run query</td>
+<td>run query</td>
+<td>выполнить запрос</td>
+</tr>
+<tr>
+<td align="right">147</td>
+<td>run report</td>
+<td>run report</td>
+<td>сформировать отчёт</td>
+</tr>
+<tr>
+<td align="right">148</td>
+<td>run calculation</td>
+<td>run calculation</td>
+<td>выполнить вычисление</td>
+</tr>
+<tr>
+<td align="right">149</td>
+<td>run diagnostics</td>
+<td>run diagnostics</td>
+<td>запустить диагностику</td>
+</tr>
+<tr>
+<td align="right">150</td>
+<td>run update</td>
+<td>run update</td>
+<td>запустить обновление</td>
+</tr>
+<tr>
+<td align="right">151</td>
+<td>run installer</td>
+<td>run installer</td>
+<td>запустить установщик</td>
+</tr>
+<tr>
+<td align="right">152</td>
+<td>run service</td>
+<td>run service</td>
+<td>запустить службу</td>
+</tr>
+<tr>
+<td align="right">153</td>
+<td>run server</td>
+<td>run server</td>
+<td>запустить сервер</td>
+</tr>
+<tr>
+<td align="right">154</td>
+<td>run container</td>
+<td>run container</td>
+<td>запустить контейнер</td>
+</tr>
+<tr>
+<td align="right">155</td>
+<td>run virtual machine</td>
+<td>run virtual machine</td>
+<td>запустить виртуальную машину</td>
+</tr>
+<tr>
+<td align="right">156</td>
+<td>run database</td>
+<td>run database</td>
+<td>эксплуатировать БД</td>
+</tr>
+<tr>
+<td align="right">157</td>
+<td>run website</td>
+<td>run website</td>
+<td>поддерживать сайт</td>
+</tr>
+<tr>
+<td align="right">158</td>
+<td>run network</td>
+<td>run network</td>
+<td>управлять сетью</td>
+</tr>
+<tr>
+<td align="right">159</td>
+<td>run company</td>
+<td>run company</td>
+<td>управлять компанией</td>
+</tr>
+<tr>
+<td align="right">160</td>
+<td>run business</td>
+<td>run business</td>
+<td>вести бизнес</td>
+</tr>
+<tr>
+<td align="right">161</td>
+<td>run organization</td>
+<td>run organization</td>
+<td>руководить организацией</td>
+</tr>
+<tr>
+<td align="right">162</td>
+<td>run department</td>
+<td>run department</td>
+<td>руководить отделом</td>
+</tr>
+<tr>
+<td align="right">163</td>
+<td>run factory</td>
+<td>run factory</td>
+<td>управлять заводом</td>
+</tr>
+<tr>
+<td align="right">164</td>
+<td>run farm</td>
+<td>run farm</td>
+<td>вести фермерское хозяйство</td>
+</tr>
+<tr>
+<td align="right">165</td>
+<td>run hotel</td>
+<td>run hotel</td>
+<td>управлять гостиницей</td>
+</tr>
+<tr>
+<td align="right">166</td>
+<td>run restaurant</td>
+<td>run restaurant</td>
+<td>управлять рестораном</td>
+</tr>
+<tr>
+<td align="right">167</td>
+<td>run shop</td>
+<td>run shop</td>
+<td>держать магазин</td>
+</tr>
+<tr>
+<td align="right">168</td>
+<td>run office</td>
+<td>run office</td>
+<td>руководить офисом</td>
+</tr>
+<tr>
+<td align="right">169</td>
+<td>run campaign</td>
+<td>run campaign</td>
+<td>вести кампанию</td>
+</tr>
+<tr>
+<td align="right">170</td>
+<td>run election campaign</td>
+<td>run election campaign</td>
+<td>вести предвыборную кампанию</td>
+</tr>
+<tr>
+<td align="right">171</td>
+<td>run advertisement</td>
+<td>run advertisement</td>
+<td>размещать рекламу</td>
+</tr>
+<tr>
+<td align="right">172</td>
+<td>run promotion</td>
+<td>run promotion</td>
+<td>проводить акцию</td>
+</tr>
+<tr>
+<td align="right">173</td>
+<td>run event</td>
+<td>run event</td>
+<td>организовать мероприятие</td>
+</tr>
+<tr>
+<td align="right">174</td>
+<td>run meeting</td>
+<td>run meeting</td>
+<td>проводить совещание</td>
+</tr>
+<tr>
+<td align="right">175</td>
+<td>run conference</td>
+<td>run conference</td>
+<td>проводить конференцию</td>
+</tr>
+<tr>
+<td align="right">176</td>
+<td>run course</td>
+<td>run course</td>
+<td>проводить курс</td>
+</tr>
+<tr>
+<td align="right">177</td>
+<td>run class</td>
+<td>run class</td>
+<td>вести занятие</td>
+</tr>
+<tr>
+<td align="right">178</td>
+<td>run training</td>
+<td>run training</td>
+<td>проводить обучение</td>
+</tr>
+<tr>
+<td align="right">179</td>
+<td>run interview</td>
+<td>run interview</td>
+<td>проводить интервью</td>
+</tr>
+<tr>
+<td align="right">180</td>
+<td>run survey</td>
+<td>run survey</td>
+<td>проводить опрос</td>
+</tr>
+<tr>
+<td align="right">181</td>
+<td>run poll</td>
+<td>run poll</td>
+<td>проводить голосование</td>
+</tr>
+<tr>
+<td align="right">182</td>
+<td>run audit</td>
+<td>run audit</td>
+<td>проводить аудит</td>
+</tr>
+<tr>
+<td align="right">183</td>
+<td>run inspection</td>
+<td>run inspection</td>
+<td>проводить проверку</td>
+</tr>
+<tr>
+<td align="right">184</td>
+<td>run review</td>
+<td>run review</td>
+<td>проводить обзор</td>
+</tr>
+<tr>
+<td align="right">185</td>
+<td>run maintenance</td>
+<td>run maintenance</td>
+<td>проводить обслуживание</td>
+</tr>
+<tr>
+<td align="right">186</td>
+<td>run repair</td>
+<td>run repair</td>
+<td>выполнять ремонт</td>
+</tr>
+<tr>
+<td align="right">187</td>
+<td>run operation</td>
+<td>run operation</td>
+<td>проводить операцию</td>
+</tr>
+<tr>
+<td align="right">188</td>
+<td>run mission</td>
+<td>run mission</td>
+<td>выполнять миссию</td>
+</tr>
+<tr>
+<td align="right">189</td>
+<td>run exercise</td>
+<td>run exercise</td>
+<td>проводить учения</td>
+</tr>
+<tr>
+<td align="right">190</td>
+<td>run drill</td>
+<td>run drill</td>
+<td>проводить тренировку</td>
+</tr>
+<tr>
+<td align="right">191</td>
+<td>run errands</td>
+<td>run errands</td>
+<td>выполнять мелкие поручения</td>
+</tr>
+<tr>
+<td align="right">192</td>
+<td>run risk</td>
+<td>run risk</td>
+<td>рисковать</td>
+</tr>
+<tr>
+<td align="right">193</td>
+<td>run a fever</td>
+<td>run a fever</td>
+<td>иметь повышенную температуру</td>
+</tr>
+<tr>
+<td align="right">194</td>
+<td>run temperature</td>
+<td>run temperature</td>
+<td>иметь температуру</td>
+</tr>
+<tr>
+<td align="right">195</td>
+<td>run red light</td>
+<td>run a red light</td>
+<td>проехать на красный свет</td>
+</tr>
+<tr>
+<td align="right">196</td>
+<td>run stop sign</td>
+<td>run a stop sign</td>
+<td>проехать знак STOP</td>
+</tr>
+<tr>
+<td align="right">197</td>
+<td>run credit check</td>
+<td>run a credit check</td>
+<td>проверить кредитную историю</td>
+</tr>
+<tr>
+<td align="right">198</td>
+<td>run background check</td>
+<td>run a background check</td>
+<td>провести проверку биографии</td>
+</tr>
+<tr>
+<td align="right">199</td>
+<td>run DNA test</td>
+<td>run a DNA test</td>
+<td>провести ДНК-тест</td>
+</tr>
+<tr>
+<td align="right">200</td>
+<td>run blood test</td>
+<td>run a blood test</td>
+<td>сделать анализ крови</td>
+</tr>
+<tr>
+<td align="right">201</td>
+<td>run urine test</td>
+<td>run a urine test</td>
+<td>сделать анализ мочи</td>
+</tr>
+<tr>
+<td align="right">202</td>
+<td>run scan</td>
+<td>run a scan</td>
+<td>выполнить сканирование</td>
+</tr>
+<tr>
+<td align="right">203</td>
+<td>run X-ray</td>
+<td>run an X-ray</td>
+<td>сделать рентген</td>
+</tr>
+<tr>
+<td align="right">204</td>
+<td>run MRI</td>
+<td>run an MRI</td>
+<td>провести МРТ</td>
+</tr>
+<tr>
+<td align="right">205</td>
+<td>run CT scan</td>
+<td>run a CT scan</td>
+<td>провести КТ</td>
+</tr>
+<tr>
+<td align="right">206</td>
+<td>run engine</td>
+<td>run an engine</td>
+<td>запустить двигатель</td>
+</tr>
+<tr>
+<td align="right">207</td>
+<td>run motor</td>
+<td>run a motor</td>
+<td>запустить двигатель</td>
+</tr>
+<tr>
+<td align="right">208</td>
+<td>run machine</td>
+<td>run a machine</td>
+<td>эксплуатировать машину</td>
+</tr>
+<tr>
+<td align="right">209</td>
+<td>run equipment</td>
+<td>run equipment</td>
+<td>эксплуатировать оборудование</td>
+</tr>
+<tr>
+<td align="right">210</td>
+<td>run system</td>
+<td>run a system</td>
+<td>эксплуатировать систему</td>
+</tr>
+<tr>
+<td align="right">211</td>
+<td>run software</td>
+<td>run software</td>
+<td>запускать программное обеспечение</td>
+</tr>
+<tr>
+<td align="right">212</td>
+<td>run code</td>
+<td>run code</td>
+<td>выполнить код</td>
+</tr>
+<tr>
+<td align="right">213</td>
+<td>run compiler</td>
+<td>run compiler</td>
+<td>запустить компилятор</td>
+</tr>
+<tr>
+<td align="right">214</td>
+<td>run debugger</td>
+<td>run debugger</td>
+<td>запустить отладчик</td>
+</tr>
+<tr>
+<td align="right">215</td>
+<td>run shell</td>
+<td>run shell</td>
+<td>запустить оболочку</td>
+</tr>
+<tr>
+<td align="right">216</td>
+<td>run terminal</td>
+<td>run terminal</td>
+<td>открыть терминал</td>
+</tr>
+<tr>
+<td align="right">217</td>
+<td>run command line</td>
+<td>run command line</td>
+<td>выполнить команду</td>
+</tr>
+<tr>
+<td align="right">218</td>
+<td>run macro</td>
+<td>run macro</td>
+<td>выполнить макрос</td>
+</tr>
+<tr>
+<td align="right">219</td>
+<td>run workflow</td>
+<td>run workflow</td>
+<td>запустить рабочий процесс</td>
+</tr>
+<tr>
+<td align="right">220</td>
+<td>run pipeline</td>
+<td>run pipeline</td>
+<td>запустить конвейер обработки</td>
+</tr>
+<tr>
+<td align="right">221</td>
+<td>run build</td>
+<td>run build</td>
+<td>выполнить сборку</td>
+</tr>
+<tr>
+<td align="right">222</td>
+<td>run deployment</td>
+<td>run deployment</td>
+<td>выполнить развёртывание</td>
+</tr>
+<tr>
+<td align="right">223</td>
+<td>run migration</td>
+<td>run migration</td>
+<td>выполнить миграцию</td>
+</tr>
+<tr>
+<td align="right">224</td>
+<td>run synchronization</td>
+<td>run synchronization</td>
+<td>выполнить синхронизацию</td>
+</tr>
+<tr>
+<td align="right">225</td>
+<td>run backup</td>
+<td>run backup</td>
+<td>создать резервную копию</td>
+</tr>
+<tr>
+<td align="right">226</td>
+<td>run restore</td>
+<td>run restore</td>
+<td>выполнить восстановление</td>
+</tr>
+<tr>
+<td align="right">227</td>
+<td>run cleanup</td>
+<td>run cleanup</td>
+<td>выполнить очистку</td>
+</tr>
+<tr>
+<td align="right">228</td>
+<td>run optimization</td>
+<td>run optimization</td>
+<td>выполнить оптимизацию</td>
+</tr>
+<tr>
+<td align="right">229</td>
+<td>run scheduler</td>
+<td>run scheduler</td>
+<td>запустить планировщик</td>
+</tr>
+<tr>
+<td align="right">230</td>
+<td>run monitor</td>
+<td>run monitor</td>
+<td>запустить мониторинг</td>
+</tr>
+<tr>
+<td align="right">231</td>
+<td>run tracker</td>
+<td>run tracker</td>
+<td>вести отслеживание</td>
+</tr>
+<tr>
+<td align="right">232</td>
+<td>run logger</td>
+<td>run logger</td>
+<td>вести журналирование</td>
+</tr>
+<tr>
+<td align="right">233</td>
+<td>run encryption</td>
+<td>run encryption</td>
+<td>выполнить шифрование</td>
+</tr>
+<tr>
+<td align="right">234</td>
+<td>run decryption</td>
+<td>run decryption</td>
+<td>выполнить расшифровку</td>
+</tr>
+<tr>
+<td align="right">235</td>
+<td>run authentication</td>
+<td>run authentication</td>
+<td>выполнить аутентификацию</td>
+</tr>
+<tr>
+<td align="right">236</td>
+<td>run authorization</td>
+<td>run authorization</td>
+<td>выполнить авторизацию</td>
+</tr>
+<tr>
+<td align="right">237</td>
+<td>run validation</td>
+<td>run validation</td>
+<td>выполнить проверку</td>
+</tr>
+<tr>
+<td align="right">238</td>
+<td>run verification</td>
+<td>run verification</td>
+<td>выполнить верификацию</td>
+</tr>
+<tr>
+<td align="right">239</td>
+<td>run configuration</td>
+<td>run configuration</td>
+<td>выполнить настройку</td>
+</tr>
+<tr>
+<td align="right">240</td>
+<td>run initialization</td>
+<td>run initialization</td>
+<td>выполнить инициализацию</td>
+</tr>
+<tr>
+<td align="right">241</td>
+<td>run startup</td>
+<td>run startup</td>
+<td>выполнить запуск</td>
+</tr>
+<tr>
+<td align="right">242</td>
+<td>run shutdown</td>
+<td>run shutdown</td>
+<td>выполнить завершение работы</td>
+</tr>
+<tr>
+<td align="right">243</td>
+<td>run reboot</td>
+<td>run reboot</td>
+<td>выполнить перезагрузку</td>
+</tr>
+<tr>
+<td align="right">244</td>
+<td>run continuously</td>
+<td>keep running</td>
+<td>непрерывно работать</td>
+</tr>
+<tr>
+<td align="right">245</td>
+<td>run indefinitely</td>
+<td>run indefinitely</td>
+<td>работать неопределённо долго</td>
+</tr>
+<tr>
+<td align="right">246</td>
+<td>run in parallel</td>
+<td>run in parallel</td>
+<td>выполняться параллельно</td>
+</tr>
+<tr>
+<td align="right">247</td>
+<td>run sequentially</td>
+<td>run sequentially</td>
+<td>выполняться последовательно</td>
+</tr>
+<tr>
+<td align="right">248</td>
+<td>run asynchronously</td>
+<td>run asynchronously</td>
+<td>выполняться асинхронно</td>
+</tr>
+<tr>
+<td align="right">249</td>
+<td>run synchronously</td>
+<td>run synchronously</td>
+<td>выполняться синхронно</td>
+</tr>
+<tr>
+<td align="right">250</td>
+<td>run remotely</td>
+<td>run remotely</td>
+<td>выполняться удалённо</td>
+</tr>
+<tr>
+<td align="right">251</td>
+<td>run locally</td>
+<td>run locally</td>
+<td>выполняться локально</td>
+</tr>
+<tr>
+<td align="right">252</td>
+<td>run online</td>
+<td>run online</td>
+<td>работать онлайн</td>
+</tr>
+<tr>
+<td align="right">253</td>
+<td>run offline</td>
+<td>run offline</td>
+<td>работать автономно</td>
+</tr>
+<tr>
+<td align="right">254</td>
+<td>run live</td>
+<td>run live</td>
+<td>работать в реальном времени</td>
+</tr>
+<tr>
+<td align="right">255</td>
+<td>run idle</td>
+<td>run idle</td>
+<td>работать в режиме ожидания</td>
+</tr>
+<tr>
+<td align="right">256</td>
+<td>run hot</td>
+<td>run hot</td>
+<td>сильно нагреваться</td>
+</tr>
+<tr>
+<td align="right">257</td>
+<td>run cold</td>
+<td>run cold</td>
+<td>работать с низкой температурой</td>
+</tr>
+<tr>
+<td align="right">258</td>
+<td>run fast</td>
+<td>run fast</td>
+<td>работать быстро</td>
+</tr>
+<tr>
+<td align="right">259</td>
+<td>run slowly</td>
+<td>run slowly</td>
+<td>работать медленно</td>
+</tr>
+<tr>
+<td align="right">260</td>
+<td>run efficiently</td>
+<td>run efficiently</td>
+<td>работать эффективно</td>
+</tr>
+<tr>
+<td align="right">261</td>
+<td>run poorly</td>
+<td>run poorly</td>
+<td>работать плохо</td>
+</tr>
+<tr>
+<td align="right">262</td>
+<td>run reliably</td>
+<td>run reliably</td>
+<td>работать надёжно</td>
+</tr>
+<tr>
+<td align="right">263</td>
+<td>run safely</td>
+<td>run safely</td>
+<td>работать безопасно</td>
+</tr>
+<tr>
+<td align="right">264</td>
+<td>run silently</td>
+<td>run silently</td>
+<td>работать незаметно</td>
+</tr>
+<tr>
+<td align="right">265</td>
+<td>run loudly</td>
+<td>run loudly</td>
+<td>работать с шумом</td>
+</tr>
+<tr>
+<td align="right">266</td>
+<td>run cleanly</td>
+<td>run cleanly</td>
+<td>работать без ошибок</td>
+</tr>
+<tr>
+<td align="right">267</td>
+<td>run stable</td>
+<td>run stably</td>
+<td>работать стабильно</td>
+</tr>
+<tr>
+<td align="right">268</td>
+<td>run unstable</td>
+<td>run unstably</td>
+<td>работать нестабильно</td>
+</tr>
+<tr>
+<td align="right">269</td>
+<td>run efficiently under load</td>
+<td>run under load</td>
+<td>работать под нагрузкой</td>
+</tr>
+<tr>
+<td align="right">270</td>
+<td>run out of memory</td>
+<td>run out of memory</td>
+<td>исчерпать память</td>
+</tr>
+<tr>
+<td align="right">271</td>
+<td>run out of time</td>
+<td>run out of time</td>
+<td>исчерпать время</td>
+</tr>
+<tr>
+<td align="right">272</td>
+<td>run out of space</td>
+<td>run out of space</td>
+<td>закончилось место</td>
+</tr>
+<tr>
+<td align="right">273</td>
+<td>run out of fuel</td>
+<td>run out of fuel</td>
+<td>закончилось топливо</td>
+</tr>
+<tr>
+<td align="right">274</td>
+<td>run out of battery</td>
+<td>run out of battery</td>
+<td>разрядилась батарея</td>
+</tr>
+<tr>
+<td align="right">275</td>
+<td>run short on cash</td>
+<td>run short on cash</td>
+<td>остаться без денег</td>
+</tr>
+<tr>
+<td align="right">276</td>
+<td>run short on staff</td>
+<td>run short on staff</td>
+<td>испытывать нехватку персонала</td>
+</tr>
+<tr>
+<td align="right">277</td>
+<td>run somebody over</td>
+<td>run somebody over</td>
+<td>переехать человека</td>
+</tr>
+<tr>
+<td align="right">278</td>
+<td>run somebody through</td>
+<td>run somebody through</td>
+<td>пронзить оружием</td>
+</tr>
+<tr>
+<td align="right">279</td>
+<td>run somebody off</td>
+<td>run somebody off</td>
+<td>прогнать кого-либо</td>
+</tr>
+<tr>
+<td align="right">280</td>
+<td>run somebody ragged</td>
+<td>run somebody ragged</td>
+<td>измотать кого-либо</td>
+</tr>
+<tr>
+<td align="right">281</td>
+<td>run oneself into the ground</td>
+<td>run oneself into the ground</td>
+<td>довести себя до изнеможения</td>
+</tr>
+<tr>
+<td align="right">282</td>
+<td>run one&#39;s mouth</td>
+<td>run one&#39;s mouth</td>
+<td>болтать без умолку</td>
+</tr>
+<tr>
+<td align="right">283</td>
+<td>run one&#39;s eyes over</td>
+<td>run one&#39;s eyes over</td>
+<td>быстро просмотреть</td>
+</tr>
+<tr>
+<td align="right">284</td>
+<td>run the numbers</td>
+<td>run the numbers</td>
+<td>произвести расчёты</td>
+</tr>
+<tr>
+<td align="right">285</td>
+<td>run the show</td>
+<td>run the show</td>
+<td>руководить процессом</td>
+</tr>
+<tr>
+<td align="right">286</td>
+<td>run the country</td>
+<td>run the country</td>
+<td>управлять страной</td>
+</tr>
+<tr>
+<td align="right">287</td>
+<td>run the government</td>
+<td>run the government</td>
+<td>управлять правительством</td>
+</tr>
+<tr>
+<td align="right">288</td>
+<td>run the economy</td>
+<td>run the economy</td>
+<td>управлять экономикой</td>
+</tr>
+<tr>
+<td align="right">289</td>
+<td>run traffic</td>
+<td>run traffic</td>
+<td>обслуживать трафик</td>
+</tr>
+<tr>
+<td align="right">290</td>
+<td>run logistics</td>
+<td>run logistics</td>
+<td>управлять логистикой</td>
+</tr>
+<tr>
+<td align="right">291</td>
+<td>run security</td>
+<td>run security</td>
+<td>обеспечивать безопасность</td>
+</tr>
+<tr>
+<td align="right">292</td>
+<td>run finance</td>
+<td>run finance</td>
+<td>управлять финансами</td>
+</tr>
+<tr>
+<td align="right">293</td>
+<td>run marketing</td>
+<td>run marketing</td>
+<td>вести маркетинг</td>
+</tr>
+<tr>
+<td align="right">294</td>
+<td>run sales</td>
+<td>run sales</td>
+<td>руководить продажами</td>
+</tr>
+<tr>
+<td align="right">295</td>
+<td>run support</td>
+<td>run support</td>
+<td>организовывать поддержку</td>
+</tr>
+<tr>
+<td align="right">296</td>
+<td>run production</td>
+<td>run production</td>
+<td>управлять производством</td>
+</tr>
+<tr>
+<td align="right">297</td>
+<td>run operations</td>
+<td>run operations</td>
+<td>руководить операционной деятельностью</td>
+</tr>
+<tr>
+<td align="right">298</td>
+<td>run manufacturing</td>
+<td>run manufacturing</td>
+<td>управлять производством</td>
+</tr>
+<tr>
+<td align="right">299</td>
+<td>run logistics center</td>
+<td>run logistics center</td>
+<td>управлять логистическим центром</td>
+</tr>
+<tr>
+<td align="right">300</td>
+<td>run everything</td>
+<td>run everything</td>
+<td>управлять всем</td>
+</tr>
+</tbody></table>
+<p>И вот здесь начинается самое интересное:</p>
+<ol>
+<li>Русский язык выражает новые значения преимущественно приставками.</li>
+<li>Английский язык выражает новые значения преимущественно phrasal verbs, аналитическими конструкциями и сложными временами.</li>
+</ol>
+<p>Поэтому сравнение run / ran / running с 139 русскими формами изначально некорректно.</p>
+
+                <div class="post-meta">
+                    <span>09/2026</span>
+                     | Рубрики: <a href="../labels/yazyki.html">Языки</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+</html>

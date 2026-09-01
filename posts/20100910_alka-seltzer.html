@@ -6,35 +6,181 @@
     <title>Alka-Seltzer</title>
     <style>
     * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background: #fff; color: #333; line-height: 1.6; }
-    .layout { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; gap: 40px; align-items: flex-start; }
-    .main-content { flex: 1; min-width: 0; }
-    .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 20px; }
-    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 25px; }
-    header h1 { margin: 0; font-size: 1.8rem; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #fff; 
+      color: #333; 
+      line-height: 1.6;
+    }
+
+    .layout { 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column;
+      gap: 20px; 
+      width: 100%;
+    }
+
+    .sidebar { 
+      width: 100%; 
+      flex-shrink: 0; 
+      order: 1;
+    }
+
+    .main-content { 
+      width: 100%; 
+      min-width: 0; 
+      order: 2;
+    }
+
+    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+    header h1 { margin: 0; font-size: 1.8rem; overflow-wrap: break-word; }
     header a { text-decoration: none; color: #111; }
+
     article { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 25px; clear: both; }
-    article h2 { margin-top: 0; font-size: 1.5rem; }
+    article h2 { margin-top: 0; font-size: 1.5rem; overflow-wrap: break-word; }
     article h2 a { color: #111; text-decoration: none; }
     article h2 a:hover { color: #0066cc; }
     article img { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
-    article p { margin: 12px 0; clear: both; white-space: pre-line; }
+    article p { margin: 12px 0; clear: both; word-break: break-word; overflow-wrap: break-word; }
+
     .post-meta { font-size: 0.85rem; color: #666; margin-top: 15px; background: #f9f9f9; padding: 8px 12px; border-radius: 4px; clear: both; }
     .post-meta a { color: #0066cc; text-decoration: none; }
     .post-meta a:hover { text-decoration: underline; }
     .more-link { display: inline-block; margin-top: 10px; font-weight: bold; color: #0066cc; text-decoration: none; }
     .more-link:hover { text-decoration: underline; }
-    .widget { margin-bottom: 30px; }
+
+    .widget { margin-bottom: 20px; width: 100%; }
     .widget h3 { font-size: 1.1rem; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 12px; }
-    .widget ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.8; }
     .widget p { margin: 5px 0; font-size: 0.9rem; }
     .widget a { color: #0066cc; text-decoration: none; }
     .widget a:hover { text-decoration: underline; }
-    #search-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem; }
+    
+    #search-input, .labels-select { 
+      width: 100%; 
+      max-width: 100%;
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      font-size: 0.95rem; 
+      background-color: #fff;
+      display: block;
+    }
+
+    .labels-list { display: none; }
+    .labels-select { display: block; }
+
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; line-height: 1.4; clear: both; display: block; overflow-x: auto; }
+    th, td { padding: 8px 12px; border: 1px solid #dee2e6; text-align: left; }
+    th { background-color: #f1f3f5; font-weight: bold; color: #333; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+    tr:hover { background-color: #f1f5f9; }
+
+    @media (min-width: 768px) {
+      .layout { 
+        flex-direction: row; 
+        gap: 40px; 
+        padding: 20px;
+        align-items: flex-start;
+      }
+      .main-content {
+        flex: 1;
+        order: 1;
+      }
+      .sidebar { 
+        width: 280px; 
+        position: sticky; 
+        top: 20px; 
+        order: 2;
+      }
+      .labels-list { 
+        display: block; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 0.9rem; 
+        line-height: 1.8; 
+      }
+      .labels-select { 
+        display: none; 
+      }
+      table {
+        display: table;
+      }
+    }
   </style>
 </head>
 <body>
     <div class="layout">
+        
+        <div class="sidebar">
+          <header>
+            <h1><a href="../index.html">YZ Blog</a></h1>
+          </header>
+          <div class="widget">
+            <h3>Поиск по статьям</h3>
+            <input type="text" id="search-input" placeholder="Поиск...">
+          </div>
+          <div class="widget">
+            <h3>Рубрики</h3>
+            <ul class="labels-list">
+              <li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
+<li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
+<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
+<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
+<li><a href="../labels/video.html">Видео</a> (2)</li>
+<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
+<li><a href="../labels/eda.html">Еда</a> (3)</li>
+<li><a href="../labels/interesno.html">Интересно</a> (20)</li>
+<li><a href="../labels/istorii.html">Истории</a> (16)</li>
+<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
+<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
+<li><a href="../labels/konferentsii.html">Конференции</a> (3)</li>
+<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
+<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
+<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
+<li><a href="../labels/psihologiya.html">Психология</a> (26)</li>
+<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
+<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
+<li><a href="../labels/yazyki.html">Языки</a> (4)</li>
+            </ul>
+            <select class="labels-select" onchange="if (this.value) window.location.href=this.value;">
+              <option value="">Выберите рубрику...</option>
+              <option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
+<option value="../labels/anekdoty.html">Анекдоты (10)</option>
+<option value="../labels/astronomiya.html">Астрономия (1)</option>
+<option value="../labels/biznes.html">Бизнес (23)</option>
+<option value="../labels/video.html">Видео (2)</option>
+<option value="../labels/golovolomki.html">Головоломки (4)</option>
+<option value="../labels/eda.html">Еда (3)</option>
+<option value="../labels/interesno.html">Интересно (20)</option>
+<option value="../labels/istorii.html">Истории (16)</option>
+<option value="../labels/istoriya-kompaniy.html">История компаний (3)</option>
+<option value="../labels/kartinki.html">Картинки (2)</option>
+<option value="../labels/konferentsii.html">Конференции (3)</option>
+<option value="../labels/krasivaya-grafika.html">Красивая графика (2)</option>
+<option value="../labels/marketing.html">Маркетинг (9)</option>
+<option value="../labels/programmirovanie.html">Программирование (1)</option>
+<option value="../labels/psihologiya.html">Психология (26)</option>
+<option value="../labels/yumor.html">Юмор (32)</option>
+<option value="../labels/yumor-for-programmer.html">Юмор for programmer (10)</option>
+<option value="../labels/yazyki.html">Языки (4)</option>
+            </select>
+          </div>
+          <div class="widget">
+            <h3>Контакты</h3>
+            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
+          </div>
+        </div>
+      
         <div class="main-content">
             <article>
                 <h2>Alka-Seltzer</h2>
@@ -47,43 +193,6 @@
                 </div>
             </article>
         </div>
-        
-        <div class="sidebar">
-          <header>
-            <h1><a href="../index.html">YZ Blog</a></h1>
-          </header>
-          <div class="widget">
-            <h3>Поиск по статьям</h3>
-            <input type="text" id="search-input" placeholder="Поиск...">
-          </div>
-          <div class="widget">
-            <h3>Рубрики</h3>
-            <ul>
-              <li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
-<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
-<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
-<li><a href="../labels/video.html">Видео</a> (2)</li>
-<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
-<li><a href="../labels/eda.html">Еда</a> (3)</li>
-<li><a href="../labels/interesno.html">Интересно</a> (20)</li>
-<li><a href="../labels/istorii.html">Истории</a> (16)</li>
-<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
-<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
-<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
-<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
-<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
-<li><a href="../labels/psihologiya.html">Психология</a> (26)</li>
-<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
-<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
-<li><a href="../labels/yazyki.html">Языки</a> (3)</li>
-            </ul>
-          </div>
-          <div class="widget">
-            <h3>Контакты</h3>
-            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
-          </div>
-        </div>
-      
     </div>
 </body>
 </html>

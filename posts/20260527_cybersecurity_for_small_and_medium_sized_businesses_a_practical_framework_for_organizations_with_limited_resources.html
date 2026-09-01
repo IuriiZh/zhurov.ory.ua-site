@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity for small and medium-sized businesses: a practical framework for organizations with limited resources</title>
+    <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #fff; 
+      color: #333; 
+      line-height: 1.6;
+    }
+
+    .layout { 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column;
+      gap: 20px; 
+      width: 100%;
+    }
+
+    .sidebar { 
+      width: 100%; 
+      flex-shrink: 0; 
+      order: 1;
+    }
+
+    .main-content { 
+      width: 100%; 
+      min-width: 0; 
+      order: 2;
+    }
+
+    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+    header h1 { margin: 0; font-size: 1.8rem; overflow-wrap: break-word; }
+    header a { text-decoration: none; color: #111; }
+
+    article { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 25px; clear: both; }
+    article h2 { margin-top: 0; font-size: 1.5rem; overflow-wrap: break-word; }
+    article h2 a { color: #111; text-decoration: none; }
+    article h2 a:hover { color: #0066cc; }
+    article img { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
+    article p { margin: 12px 0; clear: both; word-break: break-word; overflow-wrap: break-word; }
+
+    .post-meta { font-size: 0.85rem; color: #666; margin-top: 15px; background: #f9f9f9; padding: 8px 12px; border-radius: 4px; clear: both; }
+    .post-meta a { color: #0066cc; text-decoration: none; }
+    .post-meta a:hover { text-decoration: underline; }
+    .more-link { display: inline-block; margin-top: 10px; font-weight: bold; color: #0066cc; text-decoration: none; }
+    .more-link:hover { text-decoration: underline; }
+
+    .widget { margin-bottom: 20px; width: 100%; }
+    .widget h3 { font-size: 1.1rem; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 12px; }
+    .widget p { margin: 5px 0; font-size: 0.9rem; }
+    .widget a { color: #0066cc; text-decoration: none; }
+    .widget a:hover { text-decoration: underline; }
+    
+    #search-input, .labels-select { 
+      width: 100%; 
+      max-width: 100%;
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      font-size: 0.95rem; 
+      background-color: #fff;
+      display: block;
+    }
+
+    .labels-list { display: none; }
+    .labels-select { display: block; }
+
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; line-height: 1.4; clear: both; display: block; overflow-x: auto; }
+    th, td { padding: 8px 12px; border: 1px solid #dee2e6; text-align: left; }
+    th { background-color: #f1f3f5; font-weight: bold; color: #333; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+    tr:hover { background-color: #f1f5f9; }
+
+    @media (min-width: 768px) {
+      .layout { 
+        flex-direction: row; 
+        gap: 40px; 
+        padding: 20px;
+        align-items: flex-start;
+      }
+      .main-content {
+        flex: 1;
+        order: 1;
+      }
+      .sidebar { 
+        width: 280px; 
+        position: sticky; 
+        top: 20px; 
+        order: 2;
+      }
+      .labels-list { 
+        display: block; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 0.9rem; 
+        line-height: 1.8; 
+      }
+      .labels-select { 
+        display: none; 
+      }
+      table {
+        display: table;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="layout">
+        
+        <div class="sidebar">
+          <header>
+            <h1><a href="../index.html">YZ Blog</a></h1>
+          </header>
+          <div class="widget">
+            <h3>Поиск по статьям</h3>
+            <input type="text" id="search-input" placeholder="Поиск...">
+          </div>
+          <div class="widget">
+            <h3>Рубрики</h3>
+            <ul class="labels-list">
+              <li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
+<li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
+<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
+<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
+<li><a href="../labels/video.html">Видео</a> (2)</li>
+<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
+<li><a href="../labels/eda.html">Еда</a> (3)</li>
+<li><a href="../labels/interesno.html">Интересно</a> (20)</li>
+<li><a href="../labels/istorii.html">Истории</a> (16)</li>
+<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
+<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
+<li><a href="../labels/konferentsii.html">Конференции</a> (3)</li>
+<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
+<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
+<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
+<li><a href="../labels/psihologiya.html">Психология</a> (26)</li>
+<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
+<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
+<li><a href="../labels/yazyki.html">Языки</a> (4)</li>
+            </ul>
+            <select class="labels-select" onchange="if (this.value) window.location.href=this.value;">
+              <option value="">Выберите рубрику...</option>
+              <option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
+<option value="../labels/anekdoty.html">Анекдоты (10)</option>
+<option value="../labels/astronomiya.html">Астрономия (1)</option>
+<option value="../labels/biznes.html">Бизнес (23)</option>
+<option value="../labels/video.html">Видео (2)</option>
+<option value="../labels/golovolomki.html">Головоломки (4)</option>
+<option value="../labels/eda.html">Еда (3)</option>
+<option value="../labels/interesno.html">Интересно (20)</option>
+<option value="../labels/istorii.html">Истории (16)</option>
+<option value="../labels/istoriya-kompaniy.html">История компаний (3)</option>
+<option value="../labels/kartinki.html">Картинки (2)</option>
+<option value="../labels/konferentsii.html">Конференции (3)</option>
+<option value="../labels/krasivaya-grafika.html">Красивая графика (2)</option>
+<option value="../labels/marketing.html">Маркетинг (9)</option>
+<option value="../labels/programmirovanie.html">Программирование (1)</option>
+<option value="../labels/psihologiya.html">Психология (26)</option>
+<option value="../labels/yumor.html">Юмор (32)</option>
+<option value="../labels/yumor-for-programmer.html">Юмор for programmer (10)</option>
+<option value="../labels/yazyki.html">Языки (4)</option>
+            </select>
+          </div>
+          <div class="widget">
+            <h3>Контакты</h3>
+            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
+          </div>
+        </div>
+      
+        <div class="main-content">
+            <article>
+                <h2>Cybersecurity for small and medium-sized businesses: a practical framework for organizations with limited resources</h2>
+                <p><strong>Conference:</strong> ITSec 2026<br><strong>Conference URL:</strong> <a href="https://itsec-conf.org/ua/2026/">ITSec-2020</a><br><strong>Article URLS:</strong> <a href="https://itsec-conf.org/ua/handle/17.itsec/article.2026962">https://itsec-conf.org/ua/handle/17.itsec/article.2026962</a></p>
+<p>UDK 004.056.53<br><em>Iurii Zhurov<br>SMB Cybersecurity Advisors LLC<br><a href="mailto:iurii.zhurov@smbsecurityadvisors.com">iurii.zhurov@smbsecurityadvisors.com</a></em></p>
+<p>Over the past decade, the number of cyber incidents targeting small and mediumsized businesses (SMBs) has grown at an accelerating rate. According to the Verizon Data Breach Investigations Report (2024), 46% of cyberattacks in the United States are directed at SMBs, while 60% of businesses that suffer a significant cyber incident cease operations within six months [1]. At the same time, the SMB segment — over 33 million enterprises accounting for 44% of U.S. GDP [2] — remains critically underprotected. The root cause lies not in the absence of standards, but in their inapplicability under conditions of limited resources.</p>
+<p>Existing information security frameworks — NIST Cybersecurity Framework 2.0, ISO/IEC 27001:2022, and CIS Controls v8 — were designed primarily for large organizations with dedicated security departments, certified personnel, and substantial implementation budgets. For SMBs that typically lack any dedicated cybersecurity specialist, full implementation of these standards is practically unfeasible.</p>
+<p>The objective of this paper is to develop and validate a practice-oriented framework for risk assessment and information security policy implementation, adapted to the specific organizational and resource constraints of SMBs, enabling achievement of a baseline cybersecurity posture without dedicated security personnel or significant financial investment.</p>
+<p>Analysis of existing approaches revealed a systemic gap between academic standards and the real capabilities of SMBs. Specifically, ISO/IEC 27001 implementation requires 6 to 18 months and external consultants; NIST CSF, despite its declared scalability, provides no concrete tools for organizations without an IT department; CIS Controls v8 encompasses 18 control groups, of which only a subset is adapted to the SMB level [3-5].</p>
+<p>Based on this analysis, the SMB Cybersecurity Framework: Assessment, Policy &amp; Implementation was developed. The framework implements a four-stage methodology: (1) asset inventory and threat identification accounting for the enterprise&#39;s industry-specific context; (2) risk prioritization using a likelihood × impact matrix; (3) implementation of a minimum viable set of security policies — password policy, access control, data protection, and incident response; (4) a phased implementation roadmap with 30/90/180-day horizons and an employee security awareness program.</p>
+<p>A distinguishing feature of the proposed approach is its prioritization of organizational over purely technical security measures. Practical consulting experience demonstrates that the vast majority of successful cyber incidents against SMBs are enabled by organizational vulnerabilities — absence of policies, inadequate access control, low staff awareness — rather than technical infrastructure deficiencies. Addressing organizational vulnerabilities is a necessary precondition for the effectiveness of any technical security controls.</p>
+<p>A comparative analysis of the proposed framework against existing approaches is presented in Table 1.<br><img src="../uploads//2026/05/ITSec-2026_IZhurov-Table-1.jpg" alt="ITSec-2026_IZhurov-Table-1.jpg"></p>
+<p>The framework is distributed in open access and designed for independent implementation by SMB enterprises without external specialist involvement. Application of the approach across enterprises in multiple sectors confirmed its practical feasibility and effectiveness in achieving a baseline cybersecurity posture under constrained resources.</p>
+<p>The following conclusions can be drawn from this research: 1) existing information security frameworks exhibit a systemic gap with the actual needs of SMBs, making their full implementation impractical under resource constraints; 2) the proposed framework provides a practically achievable path to baseline cybersecurity, bridging the gap between academic standards and the real capabilities of small businesses; 3) prioritizing organizational security measures over technical ones is the key principle of effective cybersecurity for SMBs; 4) a phased approach with a 30/90/180-day horizon enables enterprises to systematically build their security posture in accordance with available resources.</p>
+<ol>
+<li>Verizon Data Breach Investigations Report 2024. Basking Ridge: Verizon, 2024. 100 p.</li>
+<li>U.S. Small Business Administration. Small Business Facts. Washington: SBA, 2024.</li>
+<li>NIST Cybersecurity Framework 2.0. National Institute of Standards and Technology. Gaithersburg: NIST, 2024. 32 p.</li>
+<li>ISO/IEC 27001:2022. Information security management systems — Requirements. Geneva: ISO, 2022. 19 p.</li>
+<li>CIS Controls Version 8. Center for Internet Security. East Greenbush: CIS, 2021. 114 p.</li>
+</ol>
+<p><a href="../uploads//2026/05/ITSec-2020-IZhurov.pdf">ITSec-2020-IZhurov.pdf</a></p>
+
+                <div class="post-meta">
+                    <span>09/2026</span>
+                     | Рубрики: <a href="../labels/cybersecurity.html">Cybersecurity</a>, <a href="../labels/konferentsii.html">Конференции</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+</html>

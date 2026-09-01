@@ -6,35 +6,181 @@
     <title>Рубрика: Юмор — YZ Blog</title>
     <style>
     * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background: #fff; color: #333; line-height: 1.6; }
-    .layout { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; gap: 40px; align-items: flex-start; }
-    .main-content { flex: 1; min-width: 0; }
-    .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 20px; }
-    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 25px; }
-    header h1 { margin: 0; font-size: 1.8rem; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #fff; 
+      color: #333; 
+      line-height: 1.6;
+    }
+
+    .layout { 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column;
+      gap: 20px; 
+      width: 100%;
+    }
+
+    .sidebar { 
+      width: 100%; 
+      flex-shrink: 0; 
+      order: 1;
+    }
+
+    .main-content { 
+      width: 100%; 
+      min-width: 0; 
+      order: 2;
+    }
+
+    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+    header h1 { margin: 0; font-size: 1.8rem; overflow-wrap: break-word; }
     header a { text-decoration: none; color: #111; }
+
     article { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 25px; clear: both; }
-    article h2 { margin-top: 0; font-size: 1.5rem; }
+    article h2 { margin-top: 0; font-size: 1.5rem; overflow-wrap: break-word; }
     article h2 a { color: #111; text-decoration: none; }
     article h2 a:hover { color: #0066cc; }
     article img { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
-    article p { margin: 12px 0; clear: both; white-space: pre-line; }
+    article p { margin: 12px 0; clear: both; word-break: break-word; overflow-wrap: break-word; }
+
     .post-meta { font-size: 0.85rem; color: #666; margin-top: 15px; background: #f9f9f9; padding: 8px 12px; border-radius: 4px; clear: both; }
     .post-meta a { color: #0066cc; text-decoration: none; }
     .post-meta a:hover { text-decoration: underline; }
     .more-link { display: inline-block; margin-top: 10px; font-weight: bold; color: #0066cc; text-decoration: none; }
     .more-link:hover { text-decoration: underline; }
-    .widget { margin-bottom: 30px; }
+
+    .widget { margin-bottom: 20px; width: 100%; }
     .widget h3 { font-size: 1.1rem; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 12px; }
-    .widget ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.8; }
     .widget p { margin: 5px 0; font-size: 0.9rem; }
     .widget a { color: #0066cc; text-decoration: none; }
     .widget a:hover { text-decoration: underline; }
-    #search-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem; }
+    
+    #search-input, .labels-select { 
+      width: 100%; 
+      max-width: 100%;
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      font-size: 0.95rem; 
+      background-color: #fff;
+      display: block;
+    }
+
+    .labels-list { display: none; }
+    .labels-select { display: block; }
+
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; line-height: 1.4; clear: both; display: block; overflow-x: auto; }
+    th, td { padding: 8px 12px; border: 1px solid #dee2e6; text-align: left; }
+    th { background-color: #f1f3f5; font-weight: bold; color: #333; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+    tr:hover { background-color: #f1f5f9; }
+
+    @media (min-width: 768px) {
+      .layout { 
+        flex-direction: row; 
+        gap: 40px; 
+        padding: 20px;
+        align-items: flex-start;
+      }
+      .main-content {
+        flex: 1;
+        order: 1;
+      }
+      .sidebar { 
+        width: 280px; 
+        position: sticky; 
+        top: 20px; 
+        order: 2;
+      }
+      .labels-list { 
+        display: block; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 0.9rem; 
+        line-height: 1.8; 
+      }
+      .labels-select { 
+        display: none; 
+      }
+      table {
+        display: table;
+      }
+    }
   </style>
 </head>
 <body>
     <div class="layout">
+        
+        <div class="sidebar">
+          <header>
+            <h1><a href="../index.html">YZ Blog</a></h1>
+          </header>
+          <div class="widget">
+            <h3>Поиск по статьям</h3>
+            <input type="text" id="search-input" placeholder="Поиск...">
+          </div>
+          <div class="widget">
+            <h3>Рубрики</h3>
+            <ul class="labels-list">
+              <li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
+<li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
+<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
+<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
+<li><a href="../labels/video.html">Видео</a> (2)</li>
+<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
+<li><a href="../labels/eda.html">Еда</a> (3)</li>
+<li><a href="../labels/interesno.html">Интересно</a> (20)</li>
+<li><a href="../labels/istorii.html">Истории</a> (16)</li>
+<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
+<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
+<li><a href="../labels/konferentsii.html">Конференции</a> (3)</li>
+<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
+<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
+<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
+<li><a href="../labels/psihologiya.html">Психология</a> (26)</li>
+<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
+<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
+<li><a href="../labels/yazyki.html">Языки</a> (4)</li>
+            </ul>
+            <select class="labels-select" onchange="if (this.value) window.location.href=this.value;">
+              <option value="">Выберите рубрику...</option>
+              <option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
+<option value="../labels/anekdoty.html">Анекдоты (10)</option>
+<option value="../labels/astronomiya.html">Астрономия (1)</option>
+<option value="../labels/biznes.html">Бизнес (23)</option>
+<option value="../labels/video.html">Видео (2)</option>
+<option value="../labels/golovolomki.html">Головоломки (4)</option>
+<option value="../labels/eda.html">Еда (3)</option>
+<option value="../labels/interesno.html">Интересно (20)</option>
+<option value="../labels/istorii.html">Истории (16)</option>
+<option value="../labels/istoriya-kompaniy.html">История компаний (3)</option>
+<option value="../labels/kartinki.html">Картинки (2)</option>
+<option value="../labels/konferentsii.html">Конференции (3)</option>
+<option value="../labels/krasivaya-grafika.html">Красивая графика (2)</option>
+<option value="../labels/marketing.html">Маркетинг (9)</option>
+<option value="../labels/programmirovanie.html">Программирование (1)</option>
+<option value="../labels/psihologiya.html">Психология (26)</option>
+<option value="../labels/yumor.html">Юмор (32)</option>
+<option value="../labels/yumor-for-programmer.html">Юмор for programmer (10)</option>
+<option value="../labels/yazyki.html">Языки (4)</option>
+            </select>
+          </div>
+          <div class="widget">
+            <h3>Контакты</h3>
+            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
+          </div>
+        </div>
+      
         <div class="main-content">
             <h2>Рубрика: Юмор</h2>
             <div id="posts-feed">
@@ -69,17 +215,12 @@
           <article class="feed-article" data-title="индеец в банке">
             <h2><a href="../posts/20150108_indeets-v-banke.html">Индеец в банке</a></h2>
             <div class="article-body">
-              <p>Старый индеец приходит в банк и просит займ на 500 долларов. Банковский<br>работник начинает оформлять бумаги.</p>
-<ul>
-<li>Что ты собираешься делать с этими деньгами? - спрашивает он индейца.</li>
-<li>Я поеду в город продавать украшения, которые я сделал.</li>
-<li>Что у тебя есть для обеспечения залога?</li>
-</ul>
+              <p>Старый индеец приходит в банк и просит займ на 500 долларов. Банковский работник начинает оформлять бумаги.<br>— Что ты собираешься делать с этими деньгами? - спрашивает он индейца.<br>— Я поеду в город продавать украшения, которые я сделал.<br>— Что у тебя есть для обеспечения залога?</p>
 
             </div>
             <a href="../posts/20150108_indeets-v-banke.html" class="more-link">Подробнее &gt;</a>
             <div class="post-meta">
-              <span>01/2015</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/istorii.html">Истории</a>, <a href="../labels/biznes.html">Бизнес</a>, <a href="../labels/anekdoty.html">Анекдоты</a>
             </div>
           </article>
@@ -87,12 +228,12 @@
           <article class="feed-article" data-title="аль пачино">
             <h2><a href="../posts/20140304_al-pachino.html">Аль Пачино</a></h2>
             <div class="article-body">
-              <p>&quot;В детстве я молил бога о велосипеде, потом понял, что бог работает по-другому. Я украл велосипед и стал молить бога о прощении.&quot; Аль Пачино.</p>
+              <p><em>&quot;В детстве я молил бога о велосипеде, потом понял, что бог работает по-другому. Я украл велосипед и стал молить бога о прощении.&quot;</em><br><em>Аль Пачино.</em></p>
 
             </div>
             
             <div class="post-meta">
-              <span>03/2014</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>
             </div>
           </article>
@@ -105,7 +246,7 @@
             </div>
             
             <div class="post-meta">
-              <span>09/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/istorii.html">Истории</a>, <a href="../labels/interesno.html">Интересно</a>, <a href="../labels/biznes.html">Бизнес</a>, <a href="../labels/anekdoty.html">Анекдоты</a>
             </div>
           </article>
@@ -113,12 +254,12 @@
           <article class="feed-article" data-title="сложный русский язык">
             <h2><a href="../posts/20120828_slozhnyy-russkiy-yazyk.html">Сложный русский язык</a></h2>
             <div class="article-body">
-              <p>Перед нами стол. На столе стакан и вилка. Что они делают? Стакан стоит, а вилка лежит. Если мы воткнем вилку в столешницу, вилка будет стоять. Т. е. стоят вертикальные предметы, а лежат горизонтальные?<br>Добавляем на стол тарелку и сковороду. Они вроде как горизонтальные, но на столе стоят. Теперь положим тарелку в сковородку. Там она лежит, а ведь на столе стояла. Может быть, стоят предметы готовые к использованию? Нет, вилка–то готова была, когда лежала.<br>Теперь на стол залезает кошка. Она может стоять, сидеть и лежать. Если в плане стояния и лежания она как–то лезет в логику &quot;вертикальный–горизонтальный&quot;, то сидение - это новое свойство. Сидит она на попе.<br>Теперь на стол села птичка. Она на столе сидит, но сидит на ногах, а не на попе. Хотя вроде бы должна стоять. Но стоять она не может вовсе. Но если мы убьём бедную птичку и сделаем чучело, оно будет на столе стоять. Может показаться, что сидение - атрибут живого, но сапог на ноге тоже сидит, хотя он не живой и не имеет попы. Так что, поди ж пойми, что стоит, что лежит, а что сидит.<br>А мы ещё удивляемся, что иностранцы считают наш язык сложным и сравнивают с китайским.</p>
+              <p>Перед нами стол. На столе стакан и вилка.</p>
 
             </div>
-            
+            <a href="../posts/20120828_slozhnyy-russkiy-yazyk.html" class="more-link">Подробнее &gt;</a>
             <div class="post-meta">
-              <span>08/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yazyki.html">Языки</a>, <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/interesno.html">Интересно</a>
             </div>
           </article>
@@ -139,12 +280,12 @@
           <article class="feed-article" data-title="разница между регби и футболом">
             <h2><a href="../posts/20120625_raznitsa-mezhdu-regbi-i-futbolom.html">Разница между регби и футболом</a></h2>
             <div class="article-body">
-              <img src="../uploads//2012/06/podborlM.jpg" alt="" width="453" />
+              <p><img src="../uploads//2012/06/podborlM.jpg" alt="podborlM.jpg"></p>
 
             </div>
             
             <div class="post-meta">
-              <span>06/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>
             </div>
           </article>
@@ -153,25 +294,24 @@
             <h2><a href="../posts/20120426_interesnoe-nablyudenie-i-vyvod.html">Интересное наблюдение и вывод</a></h2>
             <div class="article-body">
               <p>Когда взрослый человек перестает бороться с грибком на ногах и вместо этого перенаправляет все свои силы и государственные ресурсы на борьбу с пропагандой грибка на ногах, такой человек представляет опасность не для грибка на ногах, а для себя и окружающих.</p>
-<p><a href="http://lenta.ru/columns/2012/04/25/children/" title="Николай Данилов" target="_blank">Николай Данилов</a></p>
 
             </div>
             
             <div class="post-meta">
-              <span>04/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/interesno.html">Интересно</a>
             </div>
           </article>
         
-          <article class="feed-article" data-title="исскуство дипломатии ">
-            <h2><a href="../posts/20120328_isskustvo-diplomatii.html">Исскуство дипломатии </a></h2>
+          <article class="feed-article" data-title="исскуство дипломатии">
+            <h2><a href="../posts/20120328_isskustvo-diplomatii.html">Исскуство дипломатии</a></h2>
             <div class="article-body">
-              <p>Однажды у Генри Киссинджера спросили:<br>— Что такое челночная дипломатия?<br>Киссинджер ответил: — О! Это универсальный еврейский метод! Поясню на примере: Вы хотите методом челночной дипломатии выдать дочь Рокфеллера замуж за простого парня из русской деревни. Как это сделать?</p>
+              <p>Однажды у Генри Киссинджера спросили:<br>— Что такое челночная дипломатия?<br>Киссинджер ответил:<br>— О! Это универсальный метод! Поясню на примере: Вы хотите методом челночной дипломатии выдать дочь Рокфеллера замуж за простого парня из русской деревни. Как это сделать?</p>
 
             </div>
             <a href="../posts/20120328_isskustvo-diplomatii.html" class="more-link">Подробнее &gt;</a>
             <div class="post-meta">
-              <span>03/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/istorii.html">Истории</a>, <a href="../labels/interesno.html">Интересно</a>, <a href="../labels/anekdoty.html">Анекдоты</a>
             </div>
           </article>
@@ -193,12 +333,12 @@
             <h2><a href="../posts/20120303_otvetstvennost-za-ubezhdeniya.html">Ответственность за убеждения</a></h2>
             <div class="article-body">
               <p>В одном американском городке бизнесмен решил открыть бар. Беда в том, что он находился на одной улице с церковью. Естественно, церковное руководство это не устраивало, и на каждой проповеди оно призывало горожан выступать против, и молиться, чтобы бог покарал нерадивого бизнесмена.<br>За день до объявленного открытия бара была сильная гроза, молния ударила в бар и он сгорел дотла. Церковники обрадовались, но ненадолго – хозяин бара подал на них в суд с требованием компенсации ущерба. Те, естественно, все отрицали.<br>Выслушав обе стороны, судья заметил: “Я пока еще не знаю, какой вердикт вынести, но из материалов дела следует, что владелец бара верит в силу молитвы, а все церковное руководство – почему-то нет… “</p>
-<p>Источник <a href="http://fit4brain.com" target="_blank">fit4brain.com</a></p>
+<p><a href="http://fit4brain.com">Источник</a></p>
 
             </div>
             
             <div class="post-meta">
-              <span>03/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/istorii.html">Истории</a>, <a href="../labels/interesno.html">Интересно</a>
             </div>
           </article>
@@ -258,12 +398,13 @@
           <article class="feed-article" data-title="о предметности советов на форумах">
             <h2><a href="../posts/20120116_o-predmetnosti-sovetov-na-forumah.html">О предметности советов на форумах</a></h2>
             <div class="article-body">
-              <p>&lt;banderlog&gt; ребенок подошел к ноутбуку, и постучал ладонями по клаве в руби конференции<br>&lt;banderlog&gt; когда я подошел, в том коде уже разобрались и нашли ошибки<br><a href="http://bash.org.ru">bash.org.ru</a></p>
+              <p><banderlog> Ребенок подошел к ноутбуку, и постучал ладонями по клаве в руби конференции<br><banderlog> Когда я подошел, в том коде уже разобрались и нашли ошибки</p>
+<p><a href="http://bash.org.ru">bash.org.ru</a></p>
 
             </div>
             
             <div class="post-meta">
-              <span>01/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor-for-programmer.html">Юмор for programmer</a>, <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/istorii.html">Истории</a>, <a href="../labels/anekdoty.html">Анекдоты</a>
             </div>
           </article>
@@ -271,13 +412,13 @@
           <article class="feed-article" data-title="джессика">
             <h2><a href="../posts/20120113_dzhessika.html">Джессика</a></h2>
             <div class="article-body">
-              <p>Компания Cadbury провела опрос, по результатам которого супруга Кролика Роджера по имени Джессика была названа самым сексуальным анимационным персонажем.<br><img src="../uploads//2012/01/40442327_krolik.jpg" alt="" width="300" /></p>
+              <p>Компания Cadbury провела опрос, по результатам которого супруга Кролика Роджера по имени Джессика была названа самым сексуальным анимационным персонажем.<br><img src="../uploads//2012/01/40442327_krolik.jpg" alt="40442327_krolik.jpg"></p>
 <p>Шикарные формы, огромные глаза и томный голос Джессики принес ей голоса 37 процентов респондентов. Миссис Рэббит дебютировала на экранах в анимационных сериалах 80-х годов, а ее первым полнометражным фильмом стал &quot;Кто подставил Кролика Роджера&quot; Роберта Земекиса. </p>
 
             </div>
             
             <div class="post-meta">
-              <span>01/2012</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/krasivaya-grafika.html">Красивая графика</a>, <a href="../labels/kartinki.html">Картинки</a>, <a href="../labels/interesno.html">Интересно</a>, <a href="../labels/anekdoty.html">Анекдоты</a>
             </div>
           </article>
@@ -298,12 +439,12 @@
           <article class="feed-article" data-title="рисковый татуировщик">
             <h2><a href="../posts/20111109_riskovyy-tatuirovschik.html">Рисковый татуировщик</a></h2>
             <div class="article-body">
-              <p><a href="../uploads//2011/11/konyk.jpg"><img src="../uploads//2011/11/konyk.jpg" alt="Рисковый татуировщик" width="700" /></a></p>
+              <p><img src="../uploads//2011/11/konyk.jpg" alt="konyk.jpg"></p>
 
             </div>
             
             <div class="post-meta">
-              <span>11/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/kartinki.html">Картинки</a>
             </div>
           </article>
@@ -318,12 +459,12 @@
 <li>Обязательно должен присутствовать суперчудодейственный компонент (даже если его не существует в природе) - керамид R, бифидобактерия эссенсис, суперминерал Pro-Z и т. п. :))</li>
 </ol>
 <p>И все. Пипл схавает. ДО сих пор убеждаюсь, что ничего не изменилось.</p>
-<p>bash.org</p>
+<p><a href="https://bash.org.ru">bash.org.ru</a></p>
 
             </div>
             
             <div class="post-meta">
-              <span>10/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/biznes.html">Бизнес</a>, <a href="../labels/marketing.html">Маркетинг</a>
             </div>
           </article>
@@ -344,12 +485,12 @@
           <article class="feed-article" data-title="тест при приеме на работу системных администраторов">
             <h2><a href="../posts/20110801_test-pri-prieme-na-rabotu-sistemnyh-administratoro.html">Тест при приеме на работу системных администраторов</a></h2>
             <div class="article-body">
-              <p>legion<br>Взяли на работу... посадили кандидатов за компы, дали странное задание отрубить друг-другу инет, кто последний с инетом, тот работает. видели бы вы ебальники кандидатов когда я их провода из свича выдёргивал<br>bash.org.ru</p>
+              <p>legion<br>Взяли на работу... посадили кандидатов за компы, дали странное задание отрубить друг-другу инет, кто последний с инетом, тот работает.<br>видели бы вы ебальники кандидатов когда я их провода из свича выдёргивал<br><a href="https://bash.org.ru">bash.org.ru</a></p>
 
             </div>
             
             <div class="post-meta">
-              <span>08/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor-for-programmer.html">Юмор for programmer</a>, <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>
             </div>
           </article>
@@ -357,7 +498,7 @@
           <article class="feed-article" data-title="альтернативный (нецензурный) гороскоп">
             <h2><a href="../posts/20110801_al-ternativnyy-netsenzurnyy-goroskop.html">Альтернативный (нецензурный) гороскоп</a></h2>
             <div class="article-body">
-              <p>&lt;strong&gt;Овен</strong><br>Баран - он баран и есть. Всегда прав и </p>
+              <p><strong>Овен</strong><br>Баран - он баран и есть. Всегда прав и </p>
 
             </div>
             <a href="../posts/20110801_al-ternativnyy-netsenzurnyy-goroskop.html" class="more-link">Подробнее &gt;</a>
@@ -380,7 +521,7 @@
             </div>
             <a href="../posts/20110617_vsya-pravda-o-startapah.html" class="more-link">Подробнее &gt;</a>
             <div class="post-meta">
-              <span>06/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/biznes.html">Бизнес</a>
             </div>
           </article>
@@ -406,7 +547,7 @@
             </div>
             <a href="../posts/20110517_novaya-igra-peretyani-nol.html" class="more-link">Подробнее &gt;</a>
             <div class="post-meta">
-              <span>05/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>
             </div>
           </article>
@@ -414,12 +555,12 @@
           <article class="feed-article" data-title="советский лозунг">
             <h2><a href="../posts/20110422_sovetskiy-lozung.html">Советский лозунг</a></h2>
             <div class="article-body">
-              <p><a href="../uploads//2011/04/plan.jpg"><img src="../uploads//2011/04/plan-212x300.jpg" alt="" width="212" /></a></p>
+              <p><img src="../uploads//2011/04/plan.jpg" alt="plan.jpg"></p>
 
             </div>
-            <a href="../posts/20110422_sovetskiy-lozung.html" class="more-link">Подробнее &gt;</a>
+            
             <div class="post-meta">
-              <span>04/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/biznes.html">Бизнес</a>
             </div>
           </article>
@@ -427,18 +568,13 @@
           <article class="feed-article" data-title="о суровых римских легионерах">
             <h2><a href="../posts/20110112_o-surovyh-rimskih-legionerah.html">О суровых римских легионерах</a></h2>
             <div class="article-body">
-              <p>Лекция в вузе. Профессор рассказывает о римских легионерах:</p>
-<ul>
-<li>Воины годами пребывали в походах, и это сплачивало их настолько, что они, как правило, влюблялись друг в друга. И это поощрялось, ибо легионер, потерявший в одном лице и друга и любовника, был беспощаден к врагу и мстил за убитого.<br>Тут один студент хихикает:</li>
-<li>Значит, легионеры были педиками?<br>Профессор тяжело вздохнул, снял очки, посмотрел на студента и говорит:</li>
-<li>Педики, говорите? Да не дай вам бог повстречаться хоть с одним таким  педиком. Нет, мой юный друг, это были никакие не педики. Это были настоящие боевые пид..расы!</li>
-</ul>
+              <p>Лекция в вузе. Профессор рассказывает о римских легионерах:<br>— Воины годами пребывали в походах, и это сплачивало их настолько, что они, как правило, влюблялись друг в друга. И это поощрялось, ибо легионер, потерявший в одном лице и друга и любовника, был беспощаден к врагу и мстил за убитого.<br>Тут один студент хихикает:<br>— Значит, легионеры были педиками?<br>Профессор тяжело вздохнул, снял очки, посмотрел на студента и говорит:<br>— Педики, говорите? Да не дай вам бог повстречаться хоть с одним таким  педиком. Нет, мой юный друг, это были никакие не педики. Это были настоящие боевые пид..расы!</p>
 <p>взято <a href="http://community.livejournal.com/bayan_dnya/782041.html">отсюда</a></p>
 
             </div>
             
             <div class="post-meta">
-              <span>01/2011</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>
             </div>
           </article>
@@ -459,12 +595,12 @@
           <article class="feed-article" data-title="axe">
             <h2><a href="../posts/20100914_axe.html">Axe</a></h2>
             <div class="article-body">
-              <p><a href="http://zhurov.ory.ua/2010/09/14/axe/"><img src="../uploads//2010/09/axe60.jpg" alt="" width="398" /></a></p>
+              <p><img src="../uploads//2010/09/axe60.jpg" alt="axe60.jpg"></p>
 
             </div>
             <a href="../posts/20100914_axe.html" class="more-link">Подробнее &gt;</a>
             <div class="post-meta">
-              <span>09/2010</span>
+              <span>09/2026</span>
                | Рубрики: <a href="../labels/yumor.html">Юмор</a>, <a href="../labels/marketing.html">Маркетинг</a>
             </div>
           </article>
@@ -472,10 +608,7 @@
           <article class="feed-article" data-title="старый скинхед учит молодого">
             <h2><a href="../posts/20100625_staryy-skinhed-uchit-molodogo.html">Старый скинхед учит молодого</a></h2>
             <div class="article-body">
-              <p>Старый скинхед учит молодого: </p>
-<ul>
-<li>Сынок, представь себе - идешь ты по городу, а навстречу тебе идет странно одетый человек, с длинными волосами, улыбается, и гитара из-за спины торчит…</li>
-</ul>
+              <p>Старый скинхед учит молодого:<br>— Сынок, представь себе - идешь ты по городу, а навстречу тебе идет странно одетый человек, с длинными волосами, улыбается, и гитара из-за спины торчит…</p>
 
             </div>
             <a href="../posts/20100625_staryy-skinhed-uchit-molodogo.html" class="more-link">Подробнее &gt;</a>
@@ -487,43 +620,6 @@
         
             </div>
         </div>
-        
-        <div class="sidebar">
-          <header>
-            <h1><a href="../index.html">YZ Blog</a></h1>
-          </header>
-          <div class="widget">
-            <h3>Поиск по статьям</h3>
-            <input type="text" id="search-input" placeholder="Поиск...">
-          </div>
-          <div class="widget">
-            <h3>Рубрики</h3>
-            <ul>
-              <li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
-<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
-<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
-<li><a href="../labels/video.html">Видео</a> (2)</li>
-<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
-<li><a href="../labels/eda.html">Еда</a> (3)</li>
-<li><a href="../labels/interesno.html">Интересно</a> (20)</li>
-<li><a href="../labels/istorii.html">Истории</a> (16)</li>
-<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
-<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
-<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
-<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
-<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
-<li><a href="../labels/psihologiya.html">Психология</a> (26)</li>
-<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
-<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
-<li><a href="../labels/yazyki.html">Языки</a> (3)</li>
-            </ul>
-          </div>
-          <div class="widget">
-            <h3>Контакты</h3>
-            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
-          </div>
-        </div>
-      
     </div>
 </body>
 </html>
