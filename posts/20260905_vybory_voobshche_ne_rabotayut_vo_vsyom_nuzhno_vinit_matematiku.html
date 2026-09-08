@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выборы вообще не работают - во всём нужно винить математику</title>
+    <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: #fff; 
+      color: #333; 
+      line-height: 1.6;
+    }
+
+    .layout { 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column;
+      gap: 20px; 
+      width: 100%;
+    }
+
+    .sidebar { 
+      width: 100%; 
+      flex-shrink: 0; 
+      order: 1;
+    }
+
+    .main-content { 
+      width: 100%; 
+      min-width: 0; 
+      order: 2;
+    }
+
+    header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+    header h1 { margin: 0; font-size: 1.8rem; overflow-wrap: break-word; }
+    header a { text-decoration: none; color: #111; }
+
+    article { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 25px; clear: both; }
+    article h2 { margin-top: 0; font-size: 1.5rem; overflow-wrap: break-word; }
+    article h2 a { color: #111; text-decoration: none; }
+    article h2 a:hover { color: #0066cc; }
+    article img { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
+    article p { margin: 12px 0; clear: both; word-break: break-word; overflow-wrap: break-word; }
+
+    .post-meta { font-size: 0.85rem; color: #666; margin-top: 15px; background: #f9f9f9; padding: 8px 12px; border-radius: 4px; clear: both; }
+    .post-meta a { color: #0066cc; text-decoration: none; }
+    .post-meta a:hover { text-decoration: underline; }
+    .more-link { display: inline-block; margin-top: 10px; font-weight: bold; color: #0066cc; text-decoration: none; }
+    .more-link:hover { text-decoration: underline; }
+
+    .widget { margin-bottom: 20px; width: 100%; }
+    .widget h3 { font-size: 1.1rem; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 12px; }
+    .widget p { margin: 5px 0; font-size: 0.9rem; }
+    .widget a { color: #0066cc; text-decoration: none; }
+    .widget a:hover { text-decoration: underline; }
+    
+    #search-input, .labels-select { 
+      width: 100%; 
+      max-width: 100%;
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      font-size: 0.95rem; 
+      background-color: #fff;
+      display: block;
+    }
+
+    .labels-list { display: none; }
+    .labels-select { display: block; }
+
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; line-height: 1.4; clear: both; display: block; overflow-x: auto; }
+    th, td { padding: 8px 12px; border: 1px solid #dee2e6; text-align: left; }
+    th { background-color: #f1f3f5; font-weight: bold; color: #333; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+    tr:hover { background-color: #f1f5f9; }
+
+    @media (min-width: 768px) {
+      .layout { 
+        flex-direction: row; 
+        gap: 40px; 
+        padding: 20px;
+        align-items: flex-start;
+      }
+      .main-content {
+        flex: 1;
+        order: 1;
+      }
+      .sidebar { 
+        width: 280px; 
+        position: sticky; 
+        top: 20px; 
+        order: 2;
+      }
+      .labels-list { 
+        display: block; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 0.9rem; 
+        line-height: 1.8; 
+      }
+      .labels-select { 
+        display: none; 
+      }
+      table {
+        display: table;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="layout">
+        
+        <div class="sidebar">
+          <header>
+            <h1><a href="../index.html">YZ Blog</a></h1>
+          </header>
+          <div class="widget">
+            <h3>Поиск по статьям</h3>
+            <input type="text" id="search-input" placeholder="Поиск...">
+          </div>
+          <div class="widget">
+            <h3>Рубрики</h3>
+            <ul class="labels-list">
+              <li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
+<li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
+<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
+<li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
+<li><a href="../labels/video.html">Видео</a> (2)</li>
+<li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
+<li><a href="../labels/eda.html">Еда</a> (3)</li>
+<li><a href="../labels/interesno.html">Интересно</a> (21)</li>
+<li><a href="../labels/istorii.html">Истории</a> (16)</li>
+<li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
+<li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
+<li><a href="../labels/konferentsii.html">Конференции</a> (3)</li>
+<li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
+<li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
+<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
+<li><a href="../labels/psihologiya.html">Психология</a> (27)</li>
+<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
+<li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
+<li><a href="../labels/yazyki.html">Языки</a> (4)</li>
+            </ul>
+            <select class="labels-select" onchange="if (this.value) window.location.href=this.value;">
+              <option value="">Выберите рубрику...</option>
+              <option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
+<option value="../labels/anekdoty.html">Анекдоты (10)</option>
+<option value="../labels/astronomiya.html">Астрономия (1)</option>
+<option value="../labels/biznes.html">Бизнес (23)</option>
+<option value="../labels/video.html">Видео (2)</option>
+<option value="../labels/golovolomki.html">Головоломки (4)</option>
+<option value="../labels/eda.html">Еда (3)</option>
+<option value="../labels/interesno.html">Интересно (21)</option>
+<option value="../labels/istorii.html">Истории (16)</option>
+<option value="../labels/istoriya-kompaniy.html">История компаний (3)</option>
+<option value="../labels/kartinki.html">Картинки (2)</option>
+<option value="../labels/konferentsii.html">Конференции (3)</option>
+<option value="../labels/krasivaya-grafika.html">Красивая графика (2)</option>
+<option value="../labels/marketing.html">Маркетинг (9)</option>
+<option value="../labels/programmirovanie.html">Программирование (1)</option>
+<option value="../labels/psihologiya.html">Психология (27)</option>
+<option value="../labels/yumor.html">Юмор (32)</option>
+<option value="../labels/yumor-for-programmer.html">Юмор for programmer (10)</option>
+<option value="../labels/yazyki.html">Языки (4)</option>
+            </select>
+          </div>
+          <div class="widget">
+            <h3>Контакты</h3>
+            <p><a href="mailto:iurii.zhurov@gmail.com">iurii.zhurov@gmail.com</a></p>
+          </div>
+        </div>
+      
+        <div class="main-content">
+            <article>
+                <h2>Выборы вообще не работают - во всём нужно винить математику</h2>
+                <div style="color:#1A1A1A;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.62;background:#F5F2EC"><div style="max-width:720px;margin:0 auto;padding:0 24px 120px">
+<header style="padding:72px 0 40px;border-bottom:3px double #1A1A1A;margin-bottom:8px">
+<h1 style="font-size:46px;line-height:1.08;margin:0 0 18px;font-weight:700;letter-spacing:-.5px">Выборы вообще не работают;<br/>во всём нужно винить математику</h1>
+<p style="font-size:21px;line-height:1.45;color:#6B6B6B;font-style:italic;margin:0 0 20px">Экскурсия по избирательным системам, каждая из которых по-своему врёт вам в лицо — и ни одна не виновата, потому что виновата сама математика голосования.</p>
+<p style="margin-top:26px;font-family:'Courier New',monospace;font-size:13px;color:#6B6B6B;letter-spacing:.3px;margin:0 0 20px">Разбор по мотивам Adam Rogers · с дополнениями и без пощады</p>
+</header><!-- more --><div style="margin:40px 0;padding:22px 26px;background:#fff;border-left:6px solid #1A1A1A;box-shadow:2px 2px 0 #D8D2C4">
+<p style="margin:0 0 20px;font-size:20px;line-height:1.5">Тезис, который придётся проглотить целиком: <strong style="background:rgba(200,50,42,.14);padding:0 3px">демократия — довольно паршивая система, и при этом лучшее, что придумало человечество.</strong> А хуже всего то, что честно провести выборы и узнать, кого на самом деле хочет большинство, — задача, которую математика объявила принципиально нерешаемой.</p>
+</div>
+<p style="margin:0 0 20px">Мы любим объяснять несправедливые выборы вбросами, каруселями и продажными чиновниками. Приятная версия: есть плохие люди, уберём их — и всё заработает. Плохая новость: даже если посадить за подсчёт голосов коллегию ангелов с идеальной честностью, результат всё равно будет кривым. Потому что кривизна встроена не в людей, а в саму процедуру превращения миллионов «я хочу вот этого» в одно-единственное «победил вот он».</p>
+<p style="margin:0 0 20px">Ниже — парад претендентов на звание «правильной системы голосования». Каждый выходит на сцену гордым, каждого мы роняем в грязь. Для приличия — с объяснением математики словами и реальным случаем, когда система опозорилась перед всей страной.</p>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 1 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">СИСТЕМА 01</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Относительное большинство
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">«кто набрал больше всех, тот и молодец» — First-Past-The-Post</span>
+</h2>
+<p style="margin:0 0 20px">Самая честная на вид система и самая тупая по сути. Один голос в руки, побеждает тот, у кого галочек больше, чем у любого другого. Не больше половины — просто больше. Так выбирают в США, Британии, Канаде, Индии. Полтора миллиарда человек живут под системой, которую студент-первокурсник разобрал бы за семинар.</p>
+<figure style="margin:34px 0;padding:20px;background:#fff;border:1px solid #D8D2C4;text-align:center">
+<svg style="max-width:100%;height:auto;display:block;margin:0 auto" viewbox="0 0 470 260" xmlns="http://www.w3.org/2000/svg">
+<!-- pie centred at (140,130), r=100. Winner 34% straddles the top. -->
+<g transform="translate(140,130)">
+<!-- winner slice 34% (red), centred on top: from -61.2° to +61.2° around vertical -->
+<path d="M0,0 L-49.2,-87.1 A100,100 0 0,1 49.2,-87.1 Z" fill="#C8322A"></path>
+<!-- ally 1 33% (right/bottom) -->
+<path d="M0,0 L49.2,-87.1 A100,100 0 0,1 -19.6,98.1 Z" fill="#2C4C6B"></path>
+<!-- ally 2 33% (left/bottom) -->
+<path d="M0,0 L-19.6,98.1 A100,100 0 0,1 -49.2,-87.1 Z" fill="#5C7E9E"></path>
+<circle fill="none" r="100" stroke="#1A1A1A" stroke-width="1.5"></circle>
+<!-- % labels inside slices, away from centre -->
+<text fill="#fff" font-family="Georgia" font-size="18" font-weight="700" text-anchor="middle" x="0" y="-58">34%</text>
+<text fill="#fff" font-family="Georgia" font-size="15" text-anchor="middle" x="52" y="40">33%</text>
+<text fill="#fff" font-family="Georgia" font-size="15" text-anchor="middle" x="-52" y="40">33%</text>
+</g>
+<!-- leader line from winner slice up-right to external label -->
+<line stroke="#1A1A1A" stroke-width="1" x1="180" x2="270" y1="55" y2="40"></line>
+<circle cx="180" cy="55" fill="#1A1A1A" r="2.5"></circle>
+<text fill="#C8322A" font-family="Georgia" font-size="16" font-weight="700" x="278" y="38">Победитель</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="278" y="58">поддержка всего 34% —</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="278" y="76">но галочек больше всех</text>
+<!-- note about the losing 66% -->
+<text style="font-family:Georgia,serif;font-size:14px;fill:#1A1A1A" x="278" y="150">Синие двое — это 66%,</text>
+<text style="font-family:Georgia,serif;font-size:14px;fill:#1A1A1A" x="278" y="170">которым красный не нужен.</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="278" y="190">Но они разделились надвое</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="278" y="206">и проиграли поодиночке.</text>
+</svg>
+<figcaption style="font-family:'Courier New',monospace;font-size:12.5px;color:#6B6B6B;margin-top:14px;letter-spacing:.2px;line-height:1.5">Двое похожих кандидатов делят 66% голосов пополам. Побеждает тот, против кого две трети страны. Аплодисменты.</figcaption>
+</figure>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#2C4C6B">МАТЕМАТИКА</span>
+<p style="margin:8px 0 0">При трёх кандидатах достаточно 34% поддержки, при четырёх — 26%, при пяти — чуть больше 20%. Всё, что сверх первого выбора, система выбрасывает в мусорку: ей плевать, что 80% избирателей поставили бы победителя последним. Она умеет считать только большие пальцы, поднятые за одного.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#C8322A">ГДЕ ЛОМАЕТСЯ</span>
+<p style="margin:8px 0 0">Эффект спойлера. Два приличных кандидата с похожими взглядами дружно топят друг друга, деля общий электорат, и в образовавшуюся щель протискивается третий, которого никто, кроме его фанатов, не желал. В итоге вы голосуете не за того, кто нравится, а за «наименьшее зло, у которого есть шансы». Это называется свободным волеизъявлением.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#3B7A57">ИЗ ЖИЗНИ</span>
+<p style="margin:8px 0 0">США, 2000 год, Флорида. Буш обошёл Гора на 537 голосов — на всю страну. Рядышком за Ральфа Нейдера, идейно почти клона Гора, отдали голоса около 97 000 флоридцев. Если бы система умела спрашивать «а кто у вас второй?», XXI век выглядел бы иначе. Но она не умеет — и не собиралась.</p>
+</div>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 2 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">СИСТЕМА 02</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Мажоритарная в два тура
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">«не набрал половину — иди на добивание»</span>
+</h2>
+<p style="margin:0 0 20px">Умный ход: если в первом туре никто не собрал больше половины, двух лидеров сводят в финале один на один. Победитель гарантированно получает 50%+. Так выбирают президентов Франции, России и половины планеты. Проблема спрятана в слове «двух лидеров».</p>
+<figure style="margin:34px 0;padding:20px;background:#fff;border:1px solid #D8D2C4;text-align:center">
+<svg style="max-width:100%;height:auto;display:block;margin:0 auto" viewbox="0 0 460 210" xmlns="http://www.w3.org/2000/svg">
+<!-- round 1 boxes -->
+<g font-family="Georgia" font-size="14">
+<rect fill="#fff" height="34" stroke="#1A1A1A" width="150" x="20" y="20"></rect>
+<text fill="#1A1A1A" x="34" y="42">Радикал А — 20%</text>
+<rect fill="#fff" height="34" stroke="#1A1A1A" width="150" x="20" y="66"></rect>
+<text fill="#1A1A1A" x="34" y="88">Радикал Б — 18%</text>
+<rect fill="#F5F2EC" height="34" stroke="#C8322A" stroke-dasharray="5 3" stroke-width="2" width="150" x="20" y="112"></rect>
+<text fill="#C8322A" x="34" y="134">Центрист — 17%</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="20" y="166">↑ обыграл бы обоих в финале...</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="20" y="182">   но не дожил до финала</text>
+</g>
+<!-- arrows to round 2 -->
+<path d="M175,37 C230,37 240,80 285,80" fill="none" stroke="#2C4C6B" stroke-width="2"></path>
+<path d="M175,83 C230,83 240,110 285,110" fill="none" stroke="#2C4C6B" stroke-width="2"></path>
+<path d="M175,129 C210,129 215,150 240,150" fill="none" stroke="#C8322A" stroke-dasharray="4 3" stroke-width="2"></path>
+<text fill="#C8322A" font-family="Courier New" font-size="18" x="243" y="154">✗</text>
+<!-- round 2 -->
+<rect fill="#fff" height="70" stroke="#1A1A1A" stroke-width="1.5" width="150" x="285" y="55"></rect>
+<text fill="#1A1A1A" font-family="Georgia" font-size="13" x="300" y="82">2-й тур:</text>
+<text fill="#1A1A1A" font-family="Georgia" font-size="13" x="300" y="102">два радикала</text>
+<text fill="#6B6B6B" font-family="Courier New" font-size="11" x="300" y="120">выбор из двух зол</text>
+</svg>
+<figcaption style="font-family:'Courier New',monospace;font-size:12.5px;color:#6B6B6B;margin-top:14px;letter-spacing:.2px;line-height:1.5">Компромиссный кандидат приятен всем — и потому недобирает страстных первых мест. Во второй тур проходят двое, кого половина страны ненавидит.</figcaption>
+</figure>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#2C4C6B">МАТЕМАТИКА</span>
+<p style="margin:8px 0 0">Финал честный, да. Но кто в него попадёт — решает первый тур с той же самой логикой относительного большинства. Умеренный кандидат, устраивающий почти всех, редко становится у кого-то фаворитом №1 — и вылетает раньше финала. Система систематически душит компромисс и премирует поляризацию.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#C8322A">ГДЕ ЛОМАЕТСЯ</span>
+<p style="margin:8px 0 0">Вылетает «победитель по Кондорсе» — тот, кто в честной дуэли уложил бы любого. Бонусом идёт немонотонность: бывают расклады, где рост популярности кандидата в первом туре аукается ему поражением в итоге. Логика уровня «стань сильнее, чтобы проиграть».</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#3B7A57">ИЗ ЖИЗНИ</span>
+<p style="margin:8px 0 0">Франция, 2002. Левый электорат распылился между кучей мелких кандидатов, и фаворит-социалист Лионель Жоспен, который по опросам легко брал финал у кого угодно, занял в первом туре третье место. В финал вместо него вышел Жан-Мари Ле Пен. Страна получила выбор «Ширак или ультраправый» — и молча проглотила.</p>
+</div>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 3 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">СИСТЕМА 03</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Рейтинговое голосование
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">ранжируешь 1-2-3, слабых выбивают по очереди — Instant-Runoff</span>
+</h2>
+<p style="margin:0 0 20px">Вот тут уже интеллигентно: избиратель расставляет кандидатов по местам. Считают первые места, выбрасывают последнего, его голоса перетекают ко вторым предпочтениям, и так по кругу, пока кто-то не наберёт большинство. Так выбирают мэра Сан-Франциско — и именно с этого цирка начинается оригинальная статья, где победителя не могли объявить почти неделю.</p>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#2C4C6B">МАТЕМАТИКА</span>
+<p style="margin:8px 0 0">Система наконец-то читает запасные предпочтения — прогресс. Беда в том, что она <em>немонотонна</em>: существуют расклады, где поднять кандидата выше в бюллетенях — значит его угробить, а опустить — помочь победить. Формально доказуемо, интуитивно оскорбительно. Плюс она умудряется прокатывать победителя по Кондорсе, если тот выбывает рано из-за нехватки именно первых мест.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#C8322A">ГДЕ ЛОМАЕТСЯ</span>
+<p style="margin:8px 0 0">Немонотонность превращает честность в азартную игру. Как ворчит математик Дэниел Ульман: заходя в кабинку, вы не знаете, стоит ли раскрывать истинное желание — вдруг именно оно потопит вашего же фаворита. Агитаторы иногда прямо инструктируют: «голосуйте против третьего угла треугольника». Свобода, равенство, стратегия.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#3B7A57">ИЗ ЖИЗНИ</span>
+<p style="margin:8px 0 0">Берлингтон, Вермонт, 2009 — хрестоматийный позор. Разбор бюллетеней показал: часть избирателей, поддержавших победителя сильнее, тем самым навредила бы своему второму фавориту, а сам итог нарушил критерий Кондорсе — проиграл кандидат, обыгрывавший в дуэлях всех. Город обиделся и рейтинговую систему на время отменил.</p>
+</div>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 4 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">СИСТЕМА 04</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Метод Борда
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">за место дают баллы, побеждает сумма</span>
+</h2>
+<p style="margin:0 0 20px">Ранжируешь кандидатов, но места конвертируются в очки: первому — много, второму меньше, и так вниз. Кто набрал больше баллов, тот и президент. Красиво учитывает всю расстановку, а не только верхушку. И ровно поэтому ломается изящнее прочих.</p>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#2C4C6B">МАТЕМАТИКА</span>
+<p style="margin:8px 0 0">На одних и тех же бюллетенях большинство голосов, антибольшинство и метод Борда способны выдать <em>трёх разных</em> победителей. А ещё Борда открыто конфликтует с Кондорсе: может завернуть кандидата, который бьёт всех один на один. Три системы смотрят на одни цифры и видят трёх разных начальников — вот вам и «объективная воля народа».</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#C8322A">ГДЕ ЛОМАЕТСЯ</span>
+<p style="margin:8px 0 0">Стратегическое «закапывание» (burying): избирателю выгодно засунуть главного конкурента своего фаворита на самое дно, даже если тот вполне приличен. Сам Борда, если верить преданию, отбивался фразой: «мой метод рассчитан только на честных людей». Честных людей на выборах, как известно, завозят редко.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#3B7A57">ИЗ ЖИЗНИ</span>
+<p style="margin:8px 0 0">Кирибати отбирает президентских кандидатов вариантом метода Борда. Партии быстро сообразили выставлять «лишних» статистов, чтобы через раскладку баллов перетасовать итоговые места. Метод сам напросился — грех было не воспользоваться.</p>
+</div>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 5 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">СИСТЕМА 05</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Метод Кондорсе
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">победить должен тот, кто бьёт каждого в дуэли один на один</span>
+</h2>
+<p style="margin:0 0 20px">Самая благородная идея из всех (маркиз де Кондорсе, 1785): устроим турнир каждый-против-каждого и коронуем того, кто не проиграл никому. Логично, честно, безупречно. Ровно до момента, когда выясняется, что такого человека может не быть в природе.</p>
+<figure style="margin:34px 0;padding:20px;background:#fff;border:1px solid #D8D2C4;text-align:center">
+<svg style="max-width:100%;height:auto;display:block;margin:0 auto" viewbox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+<!-- three nodes -->
+<circle cx="210" cy="45" fill="#fff" r="30" stroke="#1A1A1A" stroke-width="2"></circle>
+<text fill="#1A1A1A" style="font-family:Georgia,serif;font-size:22px;font-weight:700" text-anchor="middle" x="210" y="52">A</text>
+<circle cx="345" cy="165" fill="#fff" r="30" stroke="#1A1A1A" stroke-width="2"></circle>
+<text fill="#1A1A1A" style="font-family:Georgia,serif;font-size:22px;font-weight:700" text-anchor="middle" x="345" y="172">B</text>
+<circle cx="75" cy="165" fill="#fff" r="30" stroke="#1A1A1A" stroke-width="2"></circle>
+<text fill="#1A1A1A" style="font-family:Georgia,serif;font-size:22px;font-weight:700" text-anchor="middle" x="75" y="172">C</text>
+<!-- arrows A->B, B->C, C->A -->
+<defs>
+<marker markerheight="10" markerwidth="10" orient="auto" refx="7" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#C8322A"></path>
+</marker>
+</defs>
+<path d="M236,62 C280,88 300,110 328,142" fill="none" marker-end="url(#ah)" stroke="#C8322A" stroke-width="2.5"></path>
+<path d="M318,178 C250,205 170,205 102,178" fill="none" marker-end="url(#ah)" stroke="#C8322A" stroke-width="2.5"></path>
+<path d="M92,142 C120,110 140,88 184,62" fill="none" marker-end="url(#ah)" stroke="#C8322A" stroke-width="2.5"></path>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="300" y="95">A > B</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="196" y="222">B > C</text>
+<text style="font-family:'Courier New',monospace;font-size:12px;fill:#6B6B6B" x="70" y="95">C > A</text>
+</svg>
+<figcaption style="font-family:'Courier New',monospace;font-size:12.5px;color:#6B6B6B;margin-top:14px;letter-spacing:.2px;line-height:1.5">Большинство предпочитает A перед B, B перед C и... C перед A. Стрелка идёт по кольцу и не останавливается. «Лучшего» кандидата просто нет — есть карусель.</figcaption>
+</figure>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#2C4C6B">МАТЕМАТИКА</span>
+<p style="margin:8px 0 0">Если победитель по Кондорсе есть — он бесспорен, и это золотой стандарт справедливости. Но его может не быть: возникает «парадокс Кондорсе», циклическое большинство A>B>C>A. Коллективное предпочтение, в отличие от индивидуального, не обязано быть непротиворечивым. Народ в целом способен хотеть по кругу.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#C8322A">ГДЕ ЛОМАЕТСЯ</span>
+<p style="margin:8px 0 0">Когда цикл есть, победитель последовательных дуэлей зависит от порядка сравнений. То есть исходом рулит не народ, а тот, кто составляет турнирную сетку. Дайте мне право назначать, кто с кем дерётся первым, — и я организую вам любого «народного избранника».</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#3B7A57">ИЗ ЖИЗНИ</span>
+<p style="margin:8px 0 0">Миннесота, 1998. Джесси Вентура (да, тот самый рестлер) победил с 37%. Опросы на выходе показали: Норм Коулман (35%) был вторым выбором почти для всех и укатал бы любого соперника в дуэли. То есть настоящий победитель по Кондорсе существовал — и система относительного большинства радостно его выкинула ради шоу.</p>
+</div>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 6 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">СИСТЕМА 06</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Одобрительное голосование
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">по каждому кандидату — просто «да» или «нет»</span>
+</h2>
+<p style="margin:0 0 20px">Никаких рангов и баллов: ставишь «да» скольким угодно кандидатам, побеждает тот, кто собрал больше всего «да». Что мило: именно эту систему эксперты по голосованию, собравшись, выбрали как лучшую — и выбирали её же с помощью её самой. Самореференция, которой позавидовал бы Гёдель.</p>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#2C4C6B">МАТЕМАТИКА</span>
+<p style="margin:8px 0 0">Почти неубиваема спойлером (одобрить запасного ничего не стоит) и обычно выкапывает кандидата с широкой поддержкой. Цена — потеря информации: «да» обожаемому и «да» терпимому весят одинаково, хотя вы-то между ними различаете пропасть. Система слышит только «ок» и «не ок», а всю страсть и всю ненависть округляет до нуля.</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#C8322A">ГДЕ ЛОМАЕТСЯ</span>
+<p style="margin:8px 0 0">Вечный вопрос «где провести черту». Одобрить второго фаворита — рискнуть, что он обгонит вашего любимца. Не одобрить — рискнуть, что пролезет ненавистный. И, как ехидно замечает Ульман, метод требует иметь мнение обо всех, а про половину из двадцати фамилий нормальный человек честно скажет «я о них впервые слышу».</p>
+</div>
+<div style="margin:22px 0">
+<span style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:1px;color:#fff;padding:3px 9px;border-radius:2px;display:inline-block;margin-bottom:2px;vertical-align:2px;background:#3B7A57">ИЗ ЖИЗНИ</span>
+<p style="margin:8px 0 0">Институт инженеров электрики и электроники (IEEE) поодобрял-поодобрял — и бросил. А город Фарго в Северной Дакоте в 2018-м, наоборот, первым в США ввёл одобрительное голосование на муниципальных выборах. Даже инженеры между собой не договорились, что уж требовать от избирателей.</p>
+</div>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== 7 ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">ПРИГОВОР</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">Почему чинить бесполезно: теорема Эрроу
+    <span style="display:block;font-size:16px;color:#6B6B6B;font-style:italic;font-weight:400;margin-top:6px;letter-spacing:0">математик, который искал идеальные выборы, и нашёл доказательство, что их нет</span>
+</h2>
+<p style="margin:0 0 20px">В 1950-х экономист Кеннет Эрроу сел искать один идеальный метод голосования — одно кольцо, чтоб править всеми. Вместо этого он доказал, что такого метода не существует, и получил за похороны мечты Нобелевскую премию. Его теорема о невозможности гласит: при трёх и более кандидатах ни одна ранжирующая система не выполнит одновременно горстку совершенно очевидных требований.</p>
+<figure style="margin:34px 0;padding:20px;background:#fff;border:1px solid #D8D2C4;text-align:center">
+<svg style="max-width:100%;height:auto;display:block;margin:0 auto" viewbox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+<g fill="#1A1A1A" font-family="Georgia" font-size="14">
+<circle cx="120" cy="70" fill="none" r="52" stroke="#2C4C6B" stroke-width="2"></circle>
+<text text-anchor="middle" x="120" y="66">единогласие</text>
+<text text-anchor="middle" x="120" y="84">(Парето)</text>
+<circle cx="320" cy="70" fill="none" r="52" stroke="#2C4C6B" stroke-width="2"></circle>
+<text text-anchor="middle" x="320" y="66">независимость</text>
+<text text-anchor="middle" x="320" y="84">альтернатив</text>
+<circle cx="120" cy="180" fill="none" r="52" stroke="#2C4C6B" stroke-width="2"></circle>
+<text text-anchor="middle" x="120" y="184">нет диктатора</text>
+<circle cx="320" cy="180" fill="none" r="52" stroke="#2C4C6B" stroke-width="2"></circle>
+<text text-anchor="middle" x="320" y="176">любые</text>
+<text text-anchor="middle" x="320" y="194">предпочтения</text>
+</g>
+<!-- central impossible stamp -->
+<g transform="translate(220,125) rotate(-12)">
+<rect fill="none" height="48" stroke="#C8322A" stroke-width="3" width="140" x="-70" y="-24"></rect>
+<text fill="#C8322A" font-family="Courier New" font-size="16" font-weight="700" text-anchor="middle" x="0" y="-2">ВСЕ СРАЗУ —</text>
+<text fill="#C8322A" font-family="Courier New" font-size="16" font-weight="700" text-anchor="middle" x="0" y="16">НЕВОЗМОЖНО</text>
+</g>
+</svg>
+<figcaption style="font-family:'Courier New',monospace;font-size:12.5px;color:#6B6B6B;margin-top:14px;letter-spacing:.2px;line-height:1.5">Четыре скромных, разумных пожелания. Эрроу доказал: собрать их в одной системе нельзя. Чинишь одно искажение — вылезает другое.</figcaption>
+</figure>
+<ul style="list-style:none;padding:0;margin:0 0 20px">
+<li style="padding:10px 0 10px 34px;position:relative;border-bottom:1px dashed #D8D2C4"><span style="position:absolute;left:6px;top:9px;color:#C8322A;font-family:'Courier New',monospace;font-weight:700">✗</span><b style="color:#1A1A1A">Универсальность.</b> Система обязана давать результат при любых предпочтениях избирателей, а не только удобных.</li>
+<li style="padding:10px 0 10px 34px;position:relative;border-bottom:1px dashed #D8D2C4"><span style="position:absolute;left:6px;top:9px;color:#C8322A;font-family:'Courier New',monospace;font-weight:700">✗</span><b style="color:#1A1A1A">Единогласие (Парето).</b> Если все до единого предпочитают A перед B — общество тоже обязано.</li>
+<li style="padding:10px 0 10px 34px;position:relative;border-bottom:1px dashed #D8D2C4"><span style="position:absolute;left:6px;top:9px;color:#C8322A;font-family:'Courier New',monospace;font-weight:700">✗</span><b style="color:#1A1A1A">Независимость от посторонних альтернатив.</b> Выбор между A и B не должен зависеть от того, влез ли в бюллетень посторонний C.</li>
+<li style="padding:10px 0 10px 34px;position:relative;border-bottom:0"><span style="position:absolute;left:6px;top:9px;color:#C8322A;font-family:'Courier New',monospace;font-weight:700">✗</span><b style="color:#1A1A1A">Отсутствие диктатора.</b> Итог не должен вечно совпадать с мнением одного конкретного человека.</li>
+</ul>
+<p style="margin:0 0 20px">Все четыре одновременно — математически невозможно. Это не дефект чьей-то реализации, а свойство самой задачи «свести множество мнений к одному решению». Родственная теорема Гиббарда—Саттертуэйта добивает контрольным: любая приличная система с тремя и более исходами либо диктаторская, либо поддаётся стратегическому вранью. То есть честное голосование в принципе не всегда в ваших интересах. Вот почему мы вечно бормочем про «наименьшее зло».</p>
+<blockquote style="margin:36px 0;padding-left:22px;border-left:4px solid #C8322A;font-size:22px;line-height:1.4;font-style:italic;color:#333">
+    За пределами выбора большинством из двух кандидатов не существует метода для точного определения выбора большинства.
+    <cite style="display:block;font-size:14px;font-style:normal;color:#6B6B6B;margin-top:10px;font-family:'Courier New',monospace">— суть парадокса Эрроу</cite>
+</blockquote>
+</section>
+<hr style="border:0;border-top:1px solid #D8D2C4;margin:0"/>
+<!-- ===================== FINAL ===================== -->
+<section style="margin-top:64px;scroll-margin-top:20px">
+<div style="font-family:'Courier New',monospace;font-size:14px;color:#C8322A;letter-spacing:1px;margin-bottom:2px">ВМЕСТО ВЫВОДА</div>
+<h2 style="font-size:31px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.4px">И это лучшее, что у нас есть</h2>
+<p style="margin:0 0 20px">Подведём безжалостный итог. Относительное большинство плодит спойлеров. Два тура топят компромисс. Рейтинговое голосование немонотонно и коварно. Борда манипулируем и грызётся с Кондорсе. Сам Кондорсе зацикливается. Одобрительное глушит все оттенки. А Эрроу сверху приколотил табличку: этот список принципиально не закрыть.</p>
+<p style="margin:0 0 20px">Соблазнительно сделать вывод «раз всё сломано, то и голосовать незачем». Это была бы ошибка идиота. Потому что альтернативы демократии — это не «идеальные выборы», а наследование трона, танковый переворот и «я тут теперь навсегда, вопросы?». На их фоне даже кривая, немонотонная, парадоксальная демократия выглядит вершиной цивилизации.</p>
+<div style="margin:40px 0;padding:22px 26px;background:#fff;border-left:6px solid #1A1A1A;box-shadow:2px 2px 0 #D8D2C4">
+<p style="margin:0 0 20px;font-size:20px;line-height:1.5">Так что правда двойная и неудобная. <strong style="background:rgba(200,50,42,.14);padding:0 3px">Демократия — плохая система, и лучшая из существующих одновременно.</strong> Её главный порок не в том, что кто-то ворует голоса, а в том, что честно вычислить «настоящего» победителя большинства почти невозможно в принципе — этого победителя может просто не существовать как математического объекта.</p>
+</div>
+<p style="margin:0 0 20px">Мы не выбираем идеальную власть. Мы выбираем, какие именно искажения готовы терпеть в этот раз. И в этом, как ни странно, есть достоинство: система, которая честно признаёт свою кривизну и всё равно даёт вам бюллетень, — куда честнее той, что обещает идеал и вручает вам одного вечного кандидата.</p>
+<blockquote style="margin:36px 0;padding-left:22px;border-left:4px solid #C8322A;font-size:22px;line-height:1.4;font-style:italic;color:#333">
+    Мы не можем сделать государство идеальным — можем лишь приближать его к идеалу.
+    <cite style="display:block;font-size:14px;font-style:normal;color:#6B6B6B;margin-top:10px;font-family:'Courier New',monospace">— Adam Rogers</cite>
+</blockquote>
+</section>
+<footer style="margin-top:80px;padding-top:24px;border-top:3px double #1A1A1A;font-size:14px;color:#6B6B6B;font-style:italic;line-height:1.55">
+  По мотивам статьи Adam Rogers «Выборы вообще не работают; во всём нужно винить математику» (Wired / перевод на Хабре). Разбор систем, реальные примеры, иллюстрации и весь яд — дополнены самостоятельно.
+</footer>
+</div></div>
+
+                <div class="post-meta">
+                    <span>09/2026</span>
+                     | Рубрики: <a href="../labels/psihologiya.html">Психология</a>, <a href="../labels/interesno.html">Интересно</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+</html>
