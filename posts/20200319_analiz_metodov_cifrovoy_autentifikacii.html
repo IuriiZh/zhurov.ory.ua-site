@@ -49,7 +49,7 @@
     article h2 { margin-top: 0; font-size: 1.5rem; overflow-wrap: break-word; }
     article h2 a { color: #111; text-decoration: none; }
     article h2 a:hover { color: #0066cc; }
-    article img { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
+    article img, article video { display: block; max-width: 100%; height: auto; margin: 15px 0; clear: both; }
     article p { margin: 12px 0; clear: both; word-break: break-word; overflow-wrap: break-word; }
 
     .post-meta { font-size: 0.85rem; color: #666; margin-top: 15px; background: #f9f9f9; padding: 8px 12px; border-radius: 4px; clear: both; }
@@ -132,45 +132,47 @@
           <div class="widget">
             <h3>Рубрики</h3>
             <ul class="labels-list">
-              <li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
+              <li><a href="../labels/ai.html">AI</a> (1)</li>
+<li><a href="../labels/cybersecurity.html">Cybersecurity</a> (3)</li>
 <li><a href="../labels/anekdoty.html">Анекдоты</a> (10)</li>
-<li><a href="../labels/astronomiya.html">Астрономия</a> (1)</li>
+<li><a href="../labels/astronomiya.html">Астрономия</a> (2)</li>
 <li><a href="../labels/biznes.html">Бизнес</a> (23)</li>
 <li><a href="../labels/video.html">Видео</a> (2)</li>
 <li><a href="../labels/golovolomki.html">Головоломки</a> (4)</li>
 <li><a href="../labels/eda.html">Еда</a> (3)</li>
-<li><a href="../labels/interesno.html">Интересно</a> (21)</li>
+<li><a href="../labels/interesno.html">Интересно</a> (23)</li>
 <li><a href="../labels/istorii.html">Истории</a> (16)</li>
 <li><a href="../labels/istoriya-kompaniy.html">История компаний</a> (3)</li>
 <li><a href="../labels/kartinki.html">Картинки</a> (2)</li>
 <li><a href="../labels/konferentsii.html">Конференции</a> (3)</li>
 <li><a href="../labels/krasivaya-grafika.html">Красивая графика</a> (2)</li>
 <li><a href="../labels/marketing.html">Маркетинг</a> (9)</li>
-<li><a href="../labels/programmirovanie.html">Программирование</a> (1)</li>
-<li><a href="../labels/psihologiya.html">Психология</a> (27)</li>
-<li><a href="../labels/yumor.html">Юмор</a> (32)</li>
+<li><a href="../labels/programmirovanie.html">Программирование</a> (2)</li>
+<li><a href="../labels/psikhologiya.html">Психология</a> (27)</li>
+<li><a href="../labels/yumor.html">Юмор</a> (33)</li>
 <li><a href="../labels/yumor-for-programmer.html">Юмор for programmer</a> (10)</li>
 <li><a href="../labels/yazyki.html">Языки</a> (4)</li>
             </ul>
             <select class="labels-select" onchange="if (this.value) window.location.href=this.value;">
               <option value="">Выберите рубрику...</option>
-              <option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
+              <option value="../labels/ai.html">AI (1)</option>
+<option value="../labels/cybersecurity.html">Cybersecurity (3)</option>
 <option value="../labels/anekdoty.html">Анекдоты (10)</option>
-<option value="../labels/astronomiya.html">Астрономия (1)</option>
+<option value="../labels/astronomiya.html">Астрономия (2)</option>
 <option value="../labels/biznes.html">Бизнес (23)</option>
 <option value="../labels/video.html">Видео (2)</option>
 <option value="../labels/golovolomki.html">Головоломки (4)</option>
 <option value="../labels/eda.html">Еда (3)</option>
-<option value="../labels/interesno.html">Интересно (21)</option>
+<option value="../labels/interesno.html">Интересно (23)</option>
 <option value="../labels/istorii.html">Истории (16)</option>
 <option value="../labels/istoriya-kompaniy.html">История компаний (3)</option>
 <option value="../labels/kartinki.html">Картинки (2)</option>
 <option value="../labels/konferentsii.html">Конференции (3)</option>
 <option value="../labels/krasivaya-grafika.html">Красивая графика (2)</option>
 <option value="../labels/marketing.html">Маркетинг (9)</option>
-<option value="../labels/programmirovanie.html">Программирование (1)</option>
-<option value="../labels/psihologiya.html">Психология (27)</option>
-<option value="../labels/yumor.html">Юмор (32)</option>
+<option value="../labels/programmirovanie.html">Программирование (2)</option>
+<option value="../labels/psikhologiya.html">Психология (27)</option>
+<option value="../labels/yumor.html">Юмор (33)</option>
 <option value="../labels/yumor-for-programmer.html">Юмор for programmer (10)</option>
 <option value="../labels/yazyki.html">Языки (4)</option>
             </select>
@@ -191,7 +193,7 @@
 <p>Рассмотрим классические методы аутентификации – методы, основанные на использовании, так называемых, факторов аутентификации. Выделяют следующие факторы – 1) знания; 2) владения; 3) свойства. Эмпирически все доступные варианты верификации аутентифицируемого субъекта/объекта можно отнести к одной из этих категорий, поэтому текущие методы базируются либо на использование этих факторов, либо на мультипликации факторов или вариативности их использования. Такими методами являются 1) однофакторная аутентификация (SFA); 2) двухфакторная аутентификация (2FA); 3) многофакторная аутентификация (MFA).</p>
 <p>В 2005 году Shintaro Mizuno, Kohji Yamada, Kenji Takahashi на конференции Proceedings of the 2005 Workshop on Digital Identity Management в докладе «Authentication using multiple communication channels» предложили метод аутентификации c использованием нескольких коммуникационных каналов (MCA), однако общее состояние развития ИС и коммуникационных каналов на 2005 год не позволило выделить данный метод в отдельный подход цифровой аутентификации и MCA принято рассматривать как фактор владения. MCA - интересен с точки зрения повышения степени надежности информационной безопасности. На данный момент метод представлен в виде использования вторичного канала связи для проведения цифровой аутентификации одним из выше перечисленных классических методов аутентификации. Такой подход называется внеполосным (Out-Of-Band).</p>
 <p>Также стоит отметить частный вариант фактора владения – так называемые «magic links» (ML) - аутентификация субъекта/объекта ИС при помощи верификации доступности ему заранее указанного некоего объекта владения.</p>
-<p>После анализа различных систем, используемых в ИС для цифровой аутентификации субъектов/объектов ИС, были выделены некоторые критерии и свойства этих систем – результаты представлены в таблице 1.<br><img src="../uploads//2020/02/ITSec-2020_IZhurov-Table-1.jpg" alt="ITSec-2020_IZhurov-Table-1.jpg"><br>Ввиду того, что критерии не являются взаимозаменяемыми, данный анализ не позволяет сделать выбор наилучшего метода или дать абсолютную оценку той или иной системы цифровой аутентификации, используемой в ИС, однако приведенная таблица позволяет сделать предположение о существующих запросах к системам, использующим методы цифровой аутентификации. </p>
+<p>После анализа различных систем, используемых в ИС для цифровой аутентификации субъектов/объектов ИС, были выделены некоторые критерии и свойства этих систем – результаты представлены в таблице 1.<br><img src="../uploads//2020/02/ITSec-2020_IZhurov-Table-1.jpg" alt="ITSec-2020_IZhurov-Table-1.jpg" style="max-width: 100%; height: auto; margin: 15px 0;"><br>Ввиду того, что критерии не являются взаимозаменяемыми, данный анализ не позволяет сделать выбор наилучшего метода или дать абсолютную оценку той или иной системы цифровой аутентификации, используемой в ИС, однако приведенная таблица позволяет сделать предположение о существующих запросах к системам, использующим методы цифровой аутентификации. </p>
 <p>По итогам проведенного анализа можно сделать следующие выводы: 1)наиболее эффективными являются методы, использующие комбинацию факторов, наиболее экономически выгодными являются методы не использующие внешнее программное обеспечение или оборудование, существует высокая потребность в методах имеющих высокую производительность и высокую степень надежности; 2) недостаточность вариантов комбинирования факторов аутентификации не позволяет существующим методам значительно улучшить экономическую эффективность, повысить степень надежности с точки зрения информационной безопасности, удешевить/ускорить внедрение, разработать производительные решения для высоконагруженных ИС; 3) интересным, с точки зрения систематизации подхода к данному вопросу как предмета научного исследования, является тот факт, что все методы используют коммуникационные каналы в том или ином виде или в той или иной комбинации, и это позволяет сделать предположение о том, что, возможно, неверно использовать термин «фактор» по отношению к коммуникационным каналам. Данное предположение, а также значительный положительный тренд развития ИС, коммуникационных каналов и способов их взаимодействия и использования позволяет нам попробовать рассмотреть MCA более углубленно.</p>
 <p>Научный руководитель д.т.н, проф. Корченко А.Г. </p>
 <p><a href="../uploads//2020/02/ITSec-2020_IZhurov.pdf">ITSec-2020_IZhurov.pdf</a></p>
